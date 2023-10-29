@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "./../components/Navbar";
 import ImgCompo from "../components/ImgCompo";
 import Presentacion from "../components/Presentacion";
-import styles from "./../styles/ejem.module.css";
 
 const imgMain = {
   src: "/imgPageMain.png",
@@ -30,6 +29,7 @@ export default function HomePage() {
         />
 
         <ImgCompo imgCompo={imgPromo1} />
+
       </main>
     </>
   );

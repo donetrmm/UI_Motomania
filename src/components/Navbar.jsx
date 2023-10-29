@@ -21,8 +21,8 @@ const theme = createTheme({
   },
 });
 const pages = {
-  item1: { tit: "CASCOS", href: "/prueba" },
-  item2: { tit: "MALETAS", href: "/ruta" },
+  item1: { tit: "CASCOS", href: "/productos" },
+  item2: { tit: "MALETAS", href: "/prueba" },
   item3: { tit: "ACCESORIOS", href: "/ruta" },
   item4: { tit: "EQUIPO PERSONAL", href: "/ruta" },
   item5: { tit: "LLANTAS", href: "/ruta" },
