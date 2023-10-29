@@ -23,7 +23,10 @@ export default function TituloProducto({titProducto}) {
         border:"1px primary.main",
         borderRadius:"0px 40px 0px 0px",
         width:"40%",
-        paddingLeft:"24px"
+        paddingLeft:"24px",
+        '@media (max-width: 530px)': {
+          width:"60%"
+        },
 
       }}
       >
