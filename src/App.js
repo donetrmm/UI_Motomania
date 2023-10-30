@@ -3,6 +3,8 @@ import HomePage from "./pages/HomePage";
 import Home from "./pages/Home";
 import Productos from "./pages/Productos";
 import Probar from "./pages/Probar";
+import HomeAdmin from "./pages/admin/HomeAdmin";
+import AgregarProductos from "./pages/admin/AgregarProductos";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -14,6 +16,8 @@ export default function App() {
           <Route path="/prueba" element={<Home />} />
           <Route path="/productos" element={<Productos />} />
           <Route path="/pro" element={<Probar />} />
+          <Route path="/HomeAdmin" element={<HomeAdmin />} />
+          <Route path="/AgregarProductos" element={<AgregarProductos />} />
         </Routes>
       </BrowserRouter>
     </div>
