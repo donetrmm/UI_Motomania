@@ -1,0 +1,29 @@
+
+.img{
+    width: 100%;
+}
+.cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.CardContImg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+}
+.contAtri{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+.pro{
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid;
+}

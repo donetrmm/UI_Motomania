@@ -1,0 +1,7 @@
+.containerPresentacion{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 30px;
+}
