@@ -13,7 +13,7 @@ const cards = [
   {
     nombre: "Editar",
     url: "https://cdn-icons-png.flaticon.com/128/860/860814.png",
-    link:"/pro"
+    link:"/AdministrarProductos"
   },
 ];
 const producTit = 'Productos Motomania'

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
+import Grid from "@mui/material/Grid";
 
 export default function Pruebasss() {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -49,8 +49,9 @@ export default function Pruebasss() {
   };
 
   return (
-    <div>
-      <Box sx={{ minWidth: 120 }}>
+    <>
+      <Grid item={6} sx={{ minWidth: 120 }}>
+        <h2>Selecciona tus productos</h2>
         <FormControl sx={{ m: 1, minWidth: 120 }}>
           <InputLabel id="demo-simple-select-helper-label">
             Productos
@@ -67,10 +68,10 @@ export default function Pruebasss() {
             ))}
           </Select>
         </FormControl>
-      </Box>
+      </Grid>
 
       {selectedProduct && (
-        <div className="product-details">
+        <Grid item={6}>
           <h2>{selectedProduct.name}</h2>
           {selectedProduct.propiedades.map((propiedades) => (
             <TextField
@@ -79,8 +80,8 @@ export default function Pruebasss() {
               type={propiedades.type}
             />
           ))}
-        </div>
+        </Grid>
       )}
-    </div>
+    </>
   );
 }

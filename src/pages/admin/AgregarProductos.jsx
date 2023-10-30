@@ -5,7 +5,10 @@ export default function AgregarProductos() {
   return (
     <>
     <Navbar />
+    <main>
     <ContAgregar />
+    </main>
+    
     </>
   )
 }
