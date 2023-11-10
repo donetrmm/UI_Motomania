@@ -19,6 +19,7 @@ export default function MenuItemNav({ pages }) {
             boxSizing: "border-box",
             marginTop: "-9px",
             marginBottom: "-9px",
+            justifyContent:'flex-end'
           }}
         >
           <Button

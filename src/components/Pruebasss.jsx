@@ -68,6 +68,8 @@ export default function Pruebasss() {
             ))}
           </Select>
         </FormControl>
+        
+        
       </Grid>
 
       {selectedProduct && (
@@ -78,10 +80,12 @@ export default function Pruebasss() {
               id="outlined"
               label={propiedades.label}
               type={propiedades.type}
+              sx={{margin:'10px'}}
             />
           ))}
         </Grid>
       )}
+
     </>
   );
 }

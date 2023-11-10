@@ -13,14 +13,12 @@ const cards = [
       url: "https://cdn1.coppel.com/images/catalog/pm/5366033-1.jpg",
       atributos: ["atributo 11", "atributo 22", "atributo 33"],
     },
-
-  
   ];
 const titProducto = 'Cascos'
 export default function Productos() {
   return (
     <>
-    <Navbar />
+    <Navbar/>
     <main>
     <TituloProducto titProducto={titProducto} />
     <ContProductos cards={cards} />
@@ -28,3 +26,5 @@ export default function Productos() {
     </>
   )
 }
+/*
+*/ 

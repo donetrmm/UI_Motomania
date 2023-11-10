@@ -2,7 +2,19 @@ import React from "react";
 import Navbar from "./../components/Navbar";
 import ImgCompo from "../components/ImgCompo";
 import Presentacion from "../components/Presentacion";
-
+const pages = {
+  item1: { tit: "CASCOS", href: "/productos" },
+  item2: { tit: "MALETAS", href: "/pro" },
+  item3: { tit: "ACCESORIOS", href: "/ruta" },
+  item4: { tit: "EQUIPO PERSONAL", href: "/ruta" },
+  item5: { tit: "LLANTAS", href: "/ruta" },
+};
+const logo = {
+    src: "/logoBlack.jpg",
+    alt: "logo",
+    width: "150",
+    height: "125",
+  };
 const imgMain = {
   src: "/imgPageMain.png",
   alt: "banner",
@@ -18,7 +30,7 @@ const imgPromo1 = {
 export default function HomePage() {
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <main>
         <ImgCompo imgCompo={imgMain} />
 

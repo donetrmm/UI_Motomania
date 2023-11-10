@@ -5,3 +5,28 @@
     overflow: hidden;
     padding: 30px;
 }
+.linkImg{
+    cursor: pointer;
+}
+.Card{
+    height: 30em;
+    width: 20em;
+ 
+    border: 1px solid #c5c3c6;
+    margin: 10px;
+}
+.Card:hover{
+    transform: scale(1.1);
+    border-radius: 20px;
+}
+img{
+    transition: 1s all ease;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.Card:hover img{
+    border: 3px solid #FFA424;
+    transform: scale(1.1);
+    border-radius: 20px;
+}
+

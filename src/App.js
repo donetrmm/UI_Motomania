@@ -6,6 +6,7 @@ import Probar from "./pages/Probar";
 import HomeAdmin from "./pages/admin/HomeAdmin";
 import AgregarProductos from "./pages/admin/AgregarProductos";
 import AdministrarProductos from "./pages/admin/AdministrarProductos";
+import AdministrarPromos from "./pages/admin/AdministrarPromos";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/HomeAdmin" element={<HomeAdmin />} />
           <Route path="/AgregarProductos" element={<AgregarProductos />} />
           <Route path="AdministrarProductos" element={<AdministrarProductos />} />
+          <Route path="AdministrarPromos" element={<AdministrarPromos />} />
         </Routes>
       </BrowserRouter>
     </div>
