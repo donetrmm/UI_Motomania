@@ -73,12 +73,7 @@ export default function ModalEditPromos({ promo, open, onClose }) {
           <Typography variant='h4' sx={{ mt: 2 }}>
             {promo.id_nombre_promocion}
           </Typography>
-          <TextField
-            id="outlined"
-            label={promo.id_nombre_promocion}
-            value={promo.id_nombre_promocion}
-            sx={{ margin: '10px' }}
-          />
+
           <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
             Subir Imagen
             <input type="file" onChange={handleFotoChange} style={{ display: 'none' }} />
