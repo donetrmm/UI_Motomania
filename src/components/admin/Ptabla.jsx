@@ -131,9 +131,6 @@ export default function Ptabla() {
 
   return (
     <>
-      <div>
-        Estado del socket: {connected ? 'Conectado' : 'Desconectado'}
-      </div>
       <div className={styles.contTable}>
         <TableContainer
           component={Paper}
