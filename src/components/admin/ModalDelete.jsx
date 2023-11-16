@@ -28,16 +28,15 @@ export default function ModalDelete({ promo, open, onClose }) {
 
     try {
       await axios.delete(`http://localhost:8081/promociones/${promo.id_nombre_promocion}`, { headers });
-      // Actualizar la lista de promociones después de eliminar
       setPromociones((prevPromociones) => prevPromociones.filter((p) => p.id_nombre_promocion !== promo.id_nombre_promocion));
-      onClose(); // Cerrar el modal después de eliminar
+      onClose();
     } catch (error) {
       console.error('Error al eliminar la promo:', error);
     }
   };
 
   if (!promo) {
-    return null; // Si no hay promo seleccionada, no renderizar el modal
+    return null; 
   }
 
   return (
