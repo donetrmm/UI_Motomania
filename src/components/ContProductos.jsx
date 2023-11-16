@@ -13,8 +13,10 @@ export default function ContProductos({cards}) {
            justifyContent: "center",
            alignItems: "center",
            textAlign: "center",
-           padding: "25px",
+           paddingBottom:'2em',
            border:'1px solid',
+           mt:'3em',
+           mb:'3em'   
  
          }} 
       >

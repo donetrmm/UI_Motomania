@@ -1,15 +1,41 @@
 import React from "react";
 import { Grid, Typography} from "@mui/material";
 import ContAdminCard from "./ContAdminCard";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+const tema = createTheme({
+  typography: {
+    fontFamily: ["Azeret Mono", "monospace  "].join(","),
+    palette: {
+      primary: {
+        main: "#070503",
+      },
+      orange: {
+        main: "#FFA424",
+      },
+    },
+  },
+});
 export default function MenuAdmin({ cards,titulo }) {
   return (
     <>
-    <Typography variant="h2" sx={{
+    <ThemeProvider theme={tema}>
+    <Typography variant="h3" sx={{
         textAlign:"center",
-        marginTop:"25px"
+        marginTop:"25px",
+        fontSize:'40px',
+        backgroundColor:'orange',
+        ml:'11%',
+        mr:'11%',
+        mt:'1.2em',
+        borderRadius:'30px 30px 0px 0px',
+        '@media screen and (min-width: 400px)': {
+          fontSize:'50px'
+        },
     }}>
         {titulo}
     </Typography>
+    </ThemeProvider>
+
       <Grid
         container
         spacing={3}
@@ -22,7 +48,7 @@ export default function MenuAdmin({ cards,titulo }) {
           paddingBottom:"20px",
           marginTop: "10px",
           marginBottom: "20px",
-          border: "1px solid",
+
         }}
       >
         

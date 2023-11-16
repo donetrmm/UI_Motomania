@@ -1,8 +1,9 @@
 import React from 'react'
-
+import styles from '../styles/Components.module.css'
 export default function Logo({logo}) {
   return (
     <>
+    <a href='/' className={styles.linkImg}>
     <img
     src={logo.src}
     alt={logo.alt}
@@ -10,6 +11,8 @@ export default function Logo({logo}) {
     height={logo.height}
     >
     </img>
+    </a>
+
     </>
   )
 }

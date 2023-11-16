@@ -10,6 +10,7 @@ import Logo from './Logo'
 import MenuItemNav from "./MenuItemNav";
 import ItemsNav from "./ItemsNav";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -20,13 +21,30 @@ const theme = createTheme({
     },
   },
 });
+const cards = [
+  {
+    id:'1',
+    nombre: "Casco",
+    url: "https://cdn1.coppel.com/images/catalog/pm/5366033-1.jpg",
+    atributos: ["atributo 1", "atributo 2", "atributo 3"],
+  },
+  {
+    id:'2',
+    nombre: "Casco222",
+    url: "https://cdn1.coppel.com/images/catalog/pm/5366033-1.jpg",
+    atributos: ["atributo 11", "atributo 22", "atributo 33"],
+  },
+  
+];
+
 const pages = {
-  item1: { tit: "CASCOS", href: "/productos" },
-  item2: { tit: "MALETAS", href: "/prueba" },
-  item3: { tit: "ACCESORIOS", href: "/ruta" },
-  item4: { tit: "EQUIPO PERSONAL", href: "/ruta" },
-  item5: { tit: "LLANTAS", href: "/ruta" },
+  item1: { id:1,tit: "cascos", href: "/productos" },
+  item2: { id:2,tit: "maletas", href: "/productos" },
+  item3: { id:3,tit: "accesorios", href: "/productos" },
+  item4: { id:4,tit: "equipo personal", href: "/productos" },
+  item5: { id:5,tit: "llantas", href: "/productos" },
 };
+
 const logo = {
     src: "/logoBlack.jpg",
     alt: "logo",
@@ -53,6 +71,11 @@ export default function Navbar() {
         <Logo logo={logo} />
 
         <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{
+            display:'flex',
+            width:'100%',
+            justifyContent:'flex-end'
+          }}>
           <IconButton
             size="large"
             aria-label="account of current user"
@@ -63,6 +86,8 @@ export default function Navbar() {
           >
             <MenuIcon />
           </IconButton>
+         
+          </Box>
           <Menu
             id="menu-appbar"
             anchorEl={anchorElNav}
@@ -82,6 +107,7 @@ export default function Navbar() {
             }}
           >
             <MenuItemNav pages={pages} />
+            
           </Menu>
         </Box>
 
@@ -98,6 +124,7 @@ export default function Navbar() {
           }}
         >
           <ItemsNav pages={pages} />
+       
         </Box>
       </Toolbar>
     </Container>

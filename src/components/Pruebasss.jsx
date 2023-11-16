@@ -5,7 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import Grid from "@mui/material/Grid";
-
+import { Typography } from "@mui/material";
 export default function Pruebasss() {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -50,8 +50,20 @@ export default function Pruebasss() {
 
   return (
     <>
-      <Grid item={6} sx={{ minWidth: 120 }}>
-        <h2>Selecciona tus productos</h2>
+      <Grid item={12} sx={{ 
+        minWidth: 120,
+        width:'100%'
+        }}>
+        <Typography variant="h3" sx={{
+          backgroundColor:'orange',
+          ml:'11%',
+          mr:'11%',
+          mt:'.4em',
+          mb:'.4em',
+          borderRadius:'30px 30px 0px 0px',
+          
+
+        }}>Selecciona tus productos</Typography>
         <FormControl sx={{ m: 1, minWidth: 120 }}>
           <InputLabel id="demo-simple-select-helper-label">
             Productos
@@ -68,20 +80,31 @@ export default function Pruebasss() {
             ))}
           </Select>
         </FormControl>
+        
+        
       </Grid>
 
       {selectedProduct && (
         <Grid item={6}>
-          <h2>{selectedProduct.name}</h2>
+          <Typography variant="h4" sx={{
+            backgroundColor:'orange',
+            ml:'11%',
+            mr:'11%',
+            mt:'.4em',
+            mb:'.4em',
+            borderRadius:'30px 30px 0px 0px',
+        }}>{selectedProduct.name}</Typography>
           {selectedProduct.propiedades.map((propiedades) => (
             <TextField
               id="outlined"
               label={propiedades.label}
               type={propiedades.type}
+              sx={{margin:'10px'}}
             />
           ))}
         </Grid>
       )}
+
     </>
   );
 }

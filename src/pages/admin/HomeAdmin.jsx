@@ -22,13 +22,13 @@ const cardsPromo = [
   {
     nombre: "Agregar",
     url: "https://cdn-icons-png.flaticon.com/128/4503/4503700.png",
-    link:"/"
+    link:"/AgregarPromos"
     
   },
   {
     nombre: "Editar",
     url: "https://cdn-icons-png.flaticon.com/128/860/860814.png",
-    link:"/pro"
+    link:"/AdministrarPromos"
   },
 ];
 const producPromo = 'Promociones Motomania'

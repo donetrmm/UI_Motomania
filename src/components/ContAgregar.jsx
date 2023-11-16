@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Grid } from "@mui/material";
+import SelectProduc from "./admin/SelectProduc";
 import Pruebasss from "./Pruebasss";
-
+import ContIn from "./ContIn";
 export default function ContAgregar() {
   return (
     <>
@@ -14,10 +15,12 @@ export default function ContAgregar() {
           alignItems: "center",
           textAlign: "center",
           border: "1px solid",
-          marginTop:"20px"
+          marginTop:"20px",
+          flexDirection:'column'
         }}
       >
       <Pruebasss />
+      <ContIn />
       </Grid>
     </>
   );
