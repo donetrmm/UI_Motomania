@@ -21,6 +21,21 @@ const theme = createTheme({
     },
   },
 });
+const cards = [
+  {
+    id:'1',
+    nombre: "Casco",
+    url: "https://cdn1.coppel.com/images/catalog/pm/5366033-1.jpg",
+    atributos: ["atributo 1", "atributo 2", "atributo 3"],
+  },
+  {
+    id:'2',
+    nombre: "Casco222",
+    url: "https://cdn1.coppel.com/images/catalog/pm/5366033-1.jpg",
+    atributos: ["atributo 11", "atributo 22", "atributo 33"],
+  },
+  
+];
 
 const pages = {
   item1: { id:1,tit: "cascos", href: "/productos" },

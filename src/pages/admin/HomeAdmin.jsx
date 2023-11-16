@@ -22,7 +22,7 @@ const cardsPromo = [
   {
     nombre: "Agregar",
     url: "https://cdn-icons-png.flaticon.com/128/4503/4503700.png",
-    link:"/"
+    link:"/AgregarPromos"
     
   },
   {

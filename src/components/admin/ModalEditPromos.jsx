@@ -17,9 +17,9 @@ const VisuallyHiddenInput = styled('input')({
   whiteSpace: 'nowrap',
   width: 1,
 });
-export default function ModalEditPromos({ product, open, onClose }) {
-    if (!product) {
-        return null; // Si no hay producto seleccionado, no renderizar el modal
+export default function ModalEditPromos({ promo, open, onClose }) {
+    if (!promo) {
+        return null; // Si no hay promoo seleccionado, no renderizar el modal
       }
   return (
 <Modal open={open} onClose={onClose}>
@@ -38,8 +38,8 @@ export default function ModalEditPromos({ product, open, onClose }) {
         flexDirection:'column',
         display:"flex"
       }}>
-        <Typography sx={{ mt: 2 }}>
-          {product.name}
+        <Typography variant='h4' sx={{ mt: 2 }}>
+          {promo.id_nombre_promocion}
         </Typography>
         <TextField
               id="outlined"
@@ -55,7 +55,7 @@ export default function ModalEditPromos({ product, open, onClose }) {
       Subir Imagen
       <VisuallyHiddenInput type="file" />
     </Button>
-      <Button>
+      <Button variant='contained' color='success' sx={{mt:'10px',mb:'10px'}}>
         Editar
       </Button>
       </Box>

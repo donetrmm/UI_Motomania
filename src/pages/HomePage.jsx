@@ -2,6 +2,10 @@ import React from "react";
 import Navbar from "./../components/Navbar";
 import ImgCompo from "../components/ImgCompo";
 import Presentacion from "../components/Presentacion";
+import Footer from "../components/Footer";
+import styles from '../styles/Pages.module.css'
+import ImgPromos from "../components/ImgPromos";
+
 const pages = {
   item1: { tit: "CASCOS", href: "/productos" },
   item2: { tit: "MALETAS", href: "/pro" },
@@ -10,11 +14,11 @@ const pages = {
   item5: { tit: "LLANTAS", href: "/ruta" },
 };
 const logo = {
-    src: "/logoBlack.jpg",
-    alt: "logo",
-    width: "150",
-    height: "125",
-  };
+  src: "/logoBlack.jpg",
+  alt: "logo",
+  width: "150",
+  height: "125",
+};
 const imgMain = {
   src: "/imgPageMain.png",
   alt: "banner",
@@ -28,21 +32,24 @@ const imgPromo1 = {
   alt: "promo",
 };
 export default function HomePage() {
+
   return (
     <>
-      <Navbar/>
-      <main>
-        <ImgCompo imgCompo={imgMain} />
 
+      <Navbar />
+      <main className={styles.main}>
+        <ImgCompo imgCompo={imgMain} />
         <Presentacion
           titulo={titulo}
           subtitulo={subtitulo}
           titulohash={titulohash}
         />
-
         <ImgCompo imgCompo={imgPromo1} />
-
+        <ImgPromos />
+        <Footer />
       </main>
+   
+     
     </>
   );
 }

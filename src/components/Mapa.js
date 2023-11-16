@@ -3,8 +3,8 @@ import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 
 const libraries = ['places'];
 const mapContainerStyle = {
-  width: '500px',
-  height: '400px',
+  width: '400px',
+  height: '300px',
 };
 const center = {
   lat: 16.751846441169903, // default latitude
@@ -13,7 +13,7 @@ const center = {
 
 const Mapa = () => {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyDC0kdj6TnO7F3GYn3Mfw5vYI5s0zlom70',
+    googleMapsApiKey: 'AIzaSyBm4h0FC4nipfhCgBDTgh9dMTSXfPyWQHU',
     libraries,
   });
 

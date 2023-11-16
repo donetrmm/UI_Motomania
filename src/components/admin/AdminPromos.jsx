@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -32,6 +33,27 @@ export default function AdminPromos() {
     const [selectedProduct, setSelectedProduct] = React.useState(null);
     const [showModal, setShowModal] = React.useState(false);
     const [modalDelete, setDeletemodal] = React.useState(false);
+
+    const [promociones, setPromociones] = useState([]);
+    const [selectedPromo, setSelectedPromo] = React.useState(null);
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get('http://localhost:8081/promociones?page=1&limit=10');
+          setPromociones(response.data.promociones);
+          console.log("dataaaa")
+          console.log(response.data)
+          console.log('data url',response.data.promociones.url_imagen_promocion)
+          response.data.promociones.forEach(promocion => {
+            console.log('for each',promocion.url_imagen_promocion)
+          });
+        } catch (error) {
+          console.log("NO chingao no paso")
+          console.error('Error al obtener los elementos', error);
+        }
+      };
+      fetchData();
+    }, []);
   
     const products = [
       { id: 1, name: "Promocion Lunes", propiedades: [{ type: "", label: "Talla" }] },
@@ -51,13 +73,13 @@ export default function AdminPromos() {
       },
     ];
   
-    const handleShowDetails = (product) => {
+    const handleShowDetails = (promo) => {
       setShowModal(true);
-      setSelectedProduct(product);
+      setSelectedPromo(promo);
     };
-    const handleDeleteDetails = (product) => {
+    const handleDeleteDetails = (promo) => {
         setDeletemodal(true);
-        setSelectedProduct(product);
+        setSelectedPromo(promo);
       };
   
     const handleCloseModal = () => {
@@ -87,9 +109,12 @@ export default function AdminPromos() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {products.map((product) => (
-                  <StyledTableRow key={product.id}>
-                    <StyledTableCell align="left">{product.name}</StyledTableCell>
+                {promociones.map((promo) => (
+                  <StyledTableRow key={promo.id}>
+                    <StyledTableCell align="left">
+                      {promo.id_nombre_promocion}
+                      <img src={`http://localhost:8081/public/images/${promo.url_imagen_promocion}`} alt='logo' width="40%"></img>
+                      </StyledTableCell>
                     <StyledTableCell
                       sx={{
                         display: "flex",
@@ -98,10 +123,10 @@ export default function AdminPromos() {
                         flexDirection: "column",
                       }}
                     >
-                      <Button onClick={() => handleShowDetails(product)}>
+                      <Button onClick={() => handleShowDetails(promo)} variant="outlined" color="success" sx={{mt:'5px',mb:'5px'}}>
                         Editar
                       </Button>
-                      <Button onClick={() => handleDeleteDetails(product)}>
+                      <Button onClick={() => handleDeleteDetails(promo)} variant="outlined" color="error" sx={{mt:'5px',mb:'5px'}}>
                         Eliminar
                       </Button>
                     </StyledTableCell>
@@ -111,12 +136,12 @@ export default function AdminPromos() {
             </Table>
           </TableContainer>
           <ModalEditPromos
-            product={selectedProduct}
+            promo={selectedPromo}
             open={showModal}
             onClose={handleCloseModal}
           />
              <ModalDelete
-            product={selectedProduct}
+            promo={selectedPromo}
             open={modalDelete}
             onClose={deleteCloseModal}
           />

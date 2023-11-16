@@ -38,7 +38,7 @@ export default function Pmo({ product, open, onClose }) {
         flexDirection:'column',
         display:"flex"
       }}>
-        <Typography sx={{ mt: 2 }}>
+        <Typography variant='h4' sx={{ mt: 2 }}>
           {product.name}
         </Typography>
         {product.propiedades.map((propiedad) =>(
@@ -71,7 +71,7 @@ export default function Pmo({ product, open, onClose }) {
       Subir Imagen
       <VisuallyHiddenInput type="file" />
     </Button>
-      <Button>
+      <Button variant='contained' color='success' sx={{mt:'10px',mb:'10px'}}>
         Editar
       </Button>
       </Box>

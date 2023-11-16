@@ -5,9 +5,9 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
 
-export default function ModalDelete({ product, open, onClose }) {
-    if (!product) {
-        return null; // Si no hay producto seleccionado, no renderizar el modal
+export default function ModalDelete({ promo, open, onClose }) {
+    if (!promo) {
+        return null; // Si no hay promoo seleccionado, no renderizar el modal
       }
   return (
 <Modal open={open} onClose={onClose}>
@@ -26,18 +26,16 @@ export default function ModalDelete({ product, open, onClose }) {
         flexDirection:'column',
         display:"flex"
       }}>
-        <Typography sx={{ mt: 2 }}>
-          {product.name}
+        <Typography variant='h4' sx={{ mt: 2,mb:3 }}>
+          {promo.id_nombre_promocion}
         </Typography>
 
              
-            <Button component="label" variant="contained" >
-      Eliminar {product.name}
+            <Button variant="outlined" color='error' sx={{marginBottom:2}}>
+      Eliminar {promo.id_nombre_promocion}
   
     </Button>
-      <Button>
-        Editar
-      </Button>
+  
       </Box>
     </Modal>
   )
