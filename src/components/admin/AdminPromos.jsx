@@ -44,6 +44,7 @@ export default function AdminPromos() {
           setPromociones(response.data.promociones);
           console.log("dataaaa")
           console.log(response.data)
+          console.log('objeto promo',response.data.promociones)
           console.log('data url',response.data.promociones.url_imagen_promocion)
           response.data.promociones.forEach(promocion => {
             console.log('for each',promocion.url_imagen_promocion)

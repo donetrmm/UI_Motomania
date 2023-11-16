@@ -23,7 +23,7 @@ export default function ModalDelete({ promo, open, onClose }) {
   const deletePromo = async () => {
     const headers = {
       'Content-Type': 'application/json',
-      Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InVzdWFyaW8iOiJ1c3VhcmlvMiIsImlkIjoiNjU1NDNlYTNiNGMzZmIxMWQ4YzBhZWMwIn0sImlhdCI6MTcwMDExNjkwNCwiZXhwIjoxNzAwMTI0MTA0fQ.nxrptkpi2ZrQvDIEZiGwMRvwmVwfAS_xHCXjbfjNnWA', // Reemplazar con tu token
+      Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InVzdWFyaW8iOiJ1c3VhcmlvMiIsImlkIjoiNjU1Mjc3OTQwYTg3YTZlNDY3NTFhNTMyIn0sImlhdCI6MTcwMDEyMTUzNiwiZXhwIjoxNzAwMTI4NzM2fQ.3oJTppEiDeLxkdIqWl4PxijQDjp8Y3xvGFK0QtJHRXI', // Reemplazar con tu token
     };
 
     try {
