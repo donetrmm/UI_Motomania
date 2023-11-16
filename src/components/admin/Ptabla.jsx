@@ -52,22 +52,18 @@ export default function Ptabla() {
   }, [page, rowsPerPage]);
   
   useEffect(() => {
-    // Evento que se dispara cuando el socket se conecta
     socket.on('connect', () => {
       setConnected(true);
     });
 
-    // Evento que se dispara cuando el socket se desconecta
     socket.on('disconnect', () => {
       setConnected(false);
     });
 
-    // Evento que se dispara cuando se crea un nuevo producto
     socket.on('productoCreado', (data) => {
       setPromociones((prevPromociones) => [data.nuevoProducto, ...prevPromociones]);
     });
 
-    // Evento que se dispara cuando se actualiza un producto
     socket.on('productoActualizado', (data) => {
       setPromociones((prevPromociones) =>
         prevPromociones.map((producto) =>
@@ -76,14 +72,12 @@ export default function Ptabla() {
       );
     });
 
-    // Evento que se dispara cuando se elimina un producto
     socket.on('productoEliminado', (data) => {
       setPromociones((prevPromociones) =>
         prevPromociones.filter((producto) => producto.codigo !== data.producto.codigo)
       );
     });
 
-    // Limpiar los eventos cuando el componente se desmonta
     return () => {
       socket.off('connect');
       socket.off('disconnect');
@@ -113,7 +107,7 @@ export default function Ptabla() {
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0); // Asegúrate de reiniciar la página al cambiar la cantidad de elementos por página
+    setPage(0); 
   };
 
   const handleShowDetails = (product) => {
