@@ -14,6 +14,8 @@ import ModalEditPromos from "./ModalEditPromos";
 import ModalDelete from "./ModalDelete";
 import styles from './../../styles/ejemAdmin.module.css'
 import { Box,Typography } from '@mui/material';
+import io from "socket.io-client";  // Importa socket.io-client
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -30,6 +32,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
+const socket = io("http://localhost:8081");  // Establece la conexión con el servidor de Socket.IO
+
 export default function AdminPromos() {
     const [selectedProduct, setSelectedProduct] = React.useState(null);
     const [showModal, setShowModal] = React.useState(false);
@@ -37,6 +41,37 @@ export default function AdminPromos() {
 
     const [promociones, setPromociones] = useState([]);
     const [selectedPromo, setSelectedPromo] = React.useState(null);
+    useEffect(() => {
+      // Manejo de eventos del socket
+  
+      // Evento que se dispara cuando se crea una nueva promoción
+      socket.on('promocionCreada', (data) => {
+        setPromociones((prevPromociones) => [data.promocion, ...prevPromociones]);
+      });
+  
+      // Evento que se dispara cuando se actualiza una promoción
+      socket.on('promocionActualizada', (data) => {
+        setPromociones((prevPromociones) =>
+          prevPromociones.map((promocion) =>
+            promocion.id_nombre_promocion === data.promocion.id_nombre_promocion ? data.promocion : promocion
+          )
+        );
+      });
+  
+      // Evento que se dispara cuando se elimina una promoción
+      socket.on('promocionEliminada', (data) => {
+        setPromociones((prevPromociones) =>
+          prevPromociones.filter((promocion) => promocion.id_nombre_promocion !== data.promocion.id_nombre_promocion)
+        );
+      });
+  
+      // Limpiar los eventos cuando el componente se desmonta
+      return () => {
+        socket.off('promocionCreada');
+        socket.off('promocionActualizada');
+        socket.off('promocionEliminada');
+      };
+    }, []);
     useEffect(() => {
       const fetchData = async () => {
         try {
@@ -111,7 +146,7 @@ export default function AdminPromos() {
               </TableHead>
               <TableBody >
                 {promociones.map((promo) => (
-                  <StyledTableRow key={promo.id} 
+                  <StyledTableRow key={promo.id_nombre_promocion} 
           
                   >
                     <StyledTableCell align="left"
