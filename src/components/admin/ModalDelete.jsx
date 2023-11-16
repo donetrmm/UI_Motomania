@@ -5,22 +5,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
-
 export default function ModalDelete({ promo, open, onClose }) {
   const [promociones, setPromociones] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:8081/promociones?page=1&limit=10');
         setPromociones(response.data.promociones);
-        console.log("dataaaa")
-        console.log(response.data)
-        console.log('data url',response.data.promociones.url_imagen_promocion)
-        response.data.promociones.forEach(promocion => {
-          console.log('for each',promocion.url_imagen_promocion)
-        });
       } catch (error) {
-        console.log("NO chingao no paso")
         console.error('Error al obtener los elementos', error);
       }
     };
@@ -28,30 +21,27 @@ export default function ModalDelete({ promo, open, onClose }) {
   }, []);
 
   const deletePromo = async () => {
-
-
     const headers = {
       'Content-Type': 'application/json',
-      Authorization:`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InVzdWFyaW8iOiJ1c3VhcmlvMiIsImlkIjoiNjU1Mjc3OTQwYTg3YTZlNDY3NTFhNTMyIn0sImlhdCI6MTcwMDExMjI4OSwiZXhwIjoxNzAwMTE5NDg5fQ.oTZqRgkMsNC_cGVlWlzs1YXowR14lZ3HoNox_SpmwJo`
+      Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InVzdWFyaW8iOiJ1c3VhcmlvMiIsImlkIjoiNjU1NDNlYTNiNGMzZmIxMWQ4YzBhZWMwIn0sImlhdCI6MTcwMDExNjkwNCwiZXhwIjoxNzAwMTI0MTA0fQ.nxrptkpi2ZrQvDIEZiGwMRvwmVwfAS_xHCXjbfjNnWA', // Reemplazar con tu token
     };
-    try{
-      await axios.delete(`http://localhost:8081/promociones/${promo.id_nombre_promocion}`, { headers })
-      
-    } catch (error){
-      console.log('Algo salio mal')
-        console.error('Error al eliminar la promo:', error);
-    } 
- 
 
+    try {
+      await axios.delete(`http://localhost:8081/promociones/${promo.id_nombre_promocion}`, { headers });
+      // Actualizar la lista de promociones después de eliminar
+      setPromociones((prevPromociones) => prevPromociones.filter((p) => p.id_nombre_promocion !== promo.id_nombre_promocion));
+      onClose(); // Cerrar el modal después de eliminar
+    } catch (error) {
+      console.error('Error al eliminar la promo:', error);
+    }
   };
-    if (!promo) {
-        return null; // Si no hay promoo seleccionado, no renderizar el modal
-      }
-      
-      
-      
+
+  if (!promo) {
+    return null; // Si no hay promo seleccionada, no renderizar el modal
+  }
+
   return (
-<Modal open={open} onClose={onClose}>
+    <Modal open={open} onClose={onClose}>
       <Box sx={{
         position: 'absolute',
         top: '50%',
@@ -62,22 +52,19 @@ export default function ModalDelete({ promo, open, onClose }) {
         border: '2px solid #000',
         boxShadow: 24,
         p: 4,
-        justifyContent:'center',
-        alignItems:'center',
-        flexDirection:'column',
-        display:"flex"
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        display: 'flex'
       }}>
-        <Typography variant='h4' sx={{ mt: 2,mb:3 }}>
+        <Typography variant='h4' sx={{ mt: 2, mb: 3 }}>
           {promo.id_nombre_promocion}
         </Typography>
 
-             
-            <Button variant="outlined" color='error' sx={{marginBottom:2}} onClick={deletePromo}>
-      Eliminar {promo.id_nombre_promocion}
-  
-    </Button>
-  
+        <Button variant="outlined" color='error' sx={{ marginBottom: 2 }} onClick={deletePromo}>
+          Eliminar {promo.id_nombre_promocion}
+        </Button>
       </Box>
     </Modal>
-  )
+  );
 }
