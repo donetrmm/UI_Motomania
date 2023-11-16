@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -6,9 +7,49 @@ import Modal from '@mui/material/Modal';
 
 
 export default function ModalDelete({ promo, open, onClose }) {
+  const [promociones, setPromociones] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8081/promociones?page=1&limit=10');
+        setPromociones(response.data.promociones);
+        console.log("dataaaa")
+        console.log(response.data)
+        console.log('data url',response.data.promociones.url_imagen_promocion)
+        response.data.promociones.forEach(promocion => {
+          console.log('for each',promocion.url_imagen_promocion)
+        });
+      } catch (error) {
+        console.log("NO chingao no paso")
+        console.error('Error al obtener los elementos', error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const deletePromo = async () => {
+
+
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization:`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InVzdWFyaW8iOiJ1c3VhcmlvMiIsImlkIjoiNjU1Mjc3OTQwYTg3YTZlNDY3NTFhNTMyIn0sImlhdCI6MTcwMDExMjI4OSwiZXhwIjoxNzAwMTE5NDg5fQ.oTZqRgkMsNC_cGVlWlzs1YXowR14lZ3HoNox_SpmwJo`
+    };
+    try{
+      await axios.delete(`http://localhost:8081/promociones/${promo.id_nombre_promocion}`, { headers })
+      
+    } catch (error){
+      console.log('Algo salio mal')
+        console.error('Error al eliminar la promo:', error);
+    } 
+ 
+
+  };
     if (!promo) {
         return null; // Si no hay promoo seleccionado, no renderizar el modal
       }
+      
+      
+      
   return (
 <Modal open={open} onClose={onClose}>
       <Box sx={{
@@ -31,7 +72,7 @@ export default function ModalDelete({ promo, open, onClose }) {
         </Typography>
 
              
-            <Button variant="outlined" color='error' sx={{marginBottom:2}}>
+            <Button variant="outlined" color='error' sx={{marginBottom:2}} onClick={deletePromo}>
       Eliminar {promo.id_nombre_promocion}
   
     </Button>

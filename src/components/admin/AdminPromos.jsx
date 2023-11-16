@@ -13,6 +13,7 @@ import Pmo from "./Pmo";
 import ModalEditPromos from "./ModalEditPromos";
 import ModalDelete from "./ModalDelete";
 import styles from './../../styles/ejemAdmin.module.css'
+import { Box,Typography } from '@mui/material';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -108,30 +109,42 @@ export default function AdminPromos() {
                   <StyledTableCell align="center">Acciones</StyledTableCell>
                 </TableRow>
               </TableHead>
-              <TableBody>
+              <TableBody >
                 {promociones.map((promo) => (
-                  <StyledTableRow key={promo.id}>
-                    <StyledTableCell align="left">
-                      {promo.id_nombre_promocion}
-                      <img src={`http://localhost:8081/public/images/${promo.url_imagen_promocion}`} alt='logo' width="40%"></img>
-                      </StyledTableCell>
-                    <StyledTableCell
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        flexDirection: "column",
-                      }}
+                  <StyledTableRow key={promo.id} 
+          
+                  >
+                    <StyledTableCell align="left"
                     >
+                      <Box sx={{
+                        display:'flex',
+                        alignItems:'center'
+                      }}>
+                        <Typography variant='h4' sx={{mr:'20px'}}>{promo.id_nombre_promocion}</Typography>
+                        <img src={`http://localhost:8081/public/images/${promo.url_imagen_promocion}`} alt='logo' width="40%"></img>
+                      </Box>
+                      
+                      
+                      </StyledTableCell>
+                    <StyledTableCell>
+                      <Box sx={{
+                        display:'flex',
+                        flexDirection:'column',
+                        height:'100%'
+                      }}>
                       <Button onClick={() => handleShowDetails(promo)} variant="outlined" color="success" sx={{mt:'5px',mb:'5px'}}>
                         Editar
                       </Button>
                       <Button onClick={() => handleDeleteDetails(promo)} variant="outlined" color="error" sx={{mt:'5px',mb:'5px'}}>
                         Eliminar
                       </Button>
+                      </Box>
+        
                     </StyledTableCell>
                   </StyledTableRow>
+                  
                 ))}
+              
               </TableBody>
             </Table>
           </TableContainer>
