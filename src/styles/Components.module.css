@@ -4,6 +4,7 @@
     flex-direction: column;
     overflow: hidden;
     padding: 30px;
+    transition: 3s all ease;
 }
 .linkImg{
     cursor: pointer;

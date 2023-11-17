@@ -14,6 +14,8 @@ export default function EncabezadoLeft({ encabezado }) {
         sx={{
           display: "flex",
           width: "100%",
+          mt:'40px',
+          mb:'40px'
         }}
       >
         <ThemeProvider theme={tema}>

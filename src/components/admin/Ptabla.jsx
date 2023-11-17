@@ -11,6 +11,7 @@ import Button from "@mui/material/Button";
 import TablePagination from '@mui/material/TablePagination';
 import Pmo from "./Pmo";
 import ModalDelete from "./ModalDelete";
+import ModalDeleteProductos from './ModalDeleteProductos';
 import styles from './../../styles/ejemAdmin.module.css';
 import axios from 'axios';
 
@@ -136,7 +137,7 @@ export default function Ptabla() {
           component={Paper}
           sx={{
             width: "60em",
-            marginTop: '40px',
+            mb:'40px',
             "@media (max-width: 500px)": {
               width: "30em",
             },
@@ -198,12 +199,8 @@ export default function Ptabla() {
             />
           </Table>
         </TableContainer>
-        <Pmo
-          product={selectedProduct}
-          open={showModal}
-          onClose={handleCloseModal}
-        />
-        <ModalDelete
+ 
+        <ModalDeleteProductos
           product={selectedProduct}
           open={modalDelete}
           onClose={deleteCloseModal}

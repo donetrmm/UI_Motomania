@@ -9,6 +9,7 @@ import AdministrarProductos from "./pages/admin/AdministrarProductos";
 import AdministrarPromos from "./pages/admin/AdministrarPromos";
 import AgregarPromos from "./pages/admin/AgregarPromos";
 import Login from "./pages/login/Login";
+import Register from "./pages/login/Register";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const cards = [
@@ -33,14 +34,15 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/prueba" element={<Home />} />
-          <Route path="/productos/:id" element={<Productos cards={cards}/>} />
+          <Route path="/productos" element={<Productos cards={cards}/>} />
           <Route path="/pro" element={<Probar />} />
           <Route path="/HomeAdmin" element={<HomeAdmin />} />
           <Route path="AgregarProductos" element={<AgregarProductos />} />
           <Route path="AdministrarProductos" element={<AdministrarProductos />} />
           <Route path="AgregarPromos" element={<AgregarPromos />} />
           <Route path="AdministrarPromos" element={<AdministrarPromos />} />
-          <Route path="login" element={<Login />} />
+          <Route path="IniciarSesion" element={<Login />} />
+          <Route path="RegistrarUsuario" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </div>

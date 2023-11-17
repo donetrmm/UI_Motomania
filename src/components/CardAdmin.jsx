@@ -8,11 +8,22 @@ export default function CardAdmin({card}) {
     <Link href={card.link} underline="none">
     <Card
     sx={{
-        height: "22em",
-        width: "20em",
+
         transition: "1s all ease",
         border: "1px solid #c5c3c6",
         margin: "10px",
+        '@media (min-width:200px)': {
+        
+          width:'13em',
+          height:'18em',
+          
+        },
+        '@media (min-width:400px)': {
+        
+          height: "25em",
+          width: "20em",
+          
+        },
 
         "&:hover": {
           border: "3px solid #FFA424",

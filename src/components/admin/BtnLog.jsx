@@ -8,7 +8,7 @@ export default function BtnLog() {
     type='submit'
     sx={{m:'20px'}}
     >
-        Iniciar Sesion
+        Registrar Usuario 
     </Button>
     </>
   )

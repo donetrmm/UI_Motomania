@@ -3,6 +3,8 @@ import Navbar from '../../components/Navbar'
 import TituloAdmin from '../../components/TituloAdmin'
 import MenuAdmin from '../../components/MenuAdmin'
 const tit1 = 'Administrar Motomania'
+const productos = 'Productos Motomania'
+const promos = 'Promociones Motomania'
 const cards = [
   {
     nombre: "Agregar",
@@ -11,7 +13,7 @@ const cards = [
     
   },
   {
-    nombre: "Editar",
+    nombre: "Administrar",
     url: "https://cdn-icons-png.flaticon.com/128/860/860814.png",
     link:"/AdministrarProductos"
   },
@@ -26,7 +28,7 @@ const cardsPromo = [
     
   },
   {
-    nombre: "Editar",
+    nombre: "Administrar",
     url: "https://cdn-icons-png.flaticon.com/128/860/860814.png",
     link:"/AdministrarPromos"
   },
@@ -38,8 +40,8 @@ export default function HomeAdmin() {
     <Navbar />
     <main>
     <TituloAdmin titulo={tit1} />
-    <MenuAdmin cards={cards} titulo={producTit}/>
-    <MenuAdmin cards={cardsPromo} titulo={producPromo}/>
+    <MenuAdmin encabezado={productos} cards={cards} titulo={producTit}/>
+    <MenuAdmin encabezado={promos} cards={cardsPromo} titulo={producPromo}/>
     </main>
    
     </>
