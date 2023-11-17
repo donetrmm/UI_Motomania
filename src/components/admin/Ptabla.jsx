@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,15 +8,15 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import TablePagination from '@mui/material/TablePagination';
+import TablePagination from "@mui/material/TablePagination";
 import Pmo from "./Pmo";
 import ModalDelete from "./ModalDelete";
-import ModalDeleteProductos from './ModalDeleteProductos';
-import styles from './../../styles/ejemAdmin.module.css';
-import axios from 'axios';
+import ModalDeleteProductos from "./ModalDeleteProductos";
+import styles from "./../../styles/ejemAdmin.module.css";
+import axios from "axios";
+import { TextField } from "@mui/material";
 
 const io = require("socket.io-client");
-
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -46,26 +46,29 @@ export default function Ptabla() {
   const [totalElements, setTotalElements] = useState(0);
   const [promociones, setPromociones] = useState([]);
   const [connected, setConnected] = useState(false);
-
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetchData();
-  }, [page, rowsPerPage]);
-  
+  }, [page, rowsPerPage, searchTerm]);
+
   useEffect(() => {
-    socket.on('connect', () => {
+    socket.on("connect", () => {
       setConnected(true);
     });
 
-    socket.on('disconnect', () => {
+    socket.on("disconnect", () => {
       setConnected(false);
     });
 
-    socket.on('productoCreado', (data) => {
-      setPromociones((prevPromociones) => [data.nuevoProducto, ...prevPromociones]);
+    socket.on("productoCreado", async (data) => {
+      setPromociones((prevPromociones) => [
+        data.nuevoProducto,
+        ...prevPromociones,
+      ]);
     });
 
-    socket.on('productoActualizado', (data) => {
+    socket.on("productoActualizado", async (data) => {
       setPromociones((prevPromociones) =>
         prevPromociones.map((producto) =>
           producto.codigo === data.producto.codigo ? data.producto : producto
@@ -73,32 +76,35 @@ export default function Ptabla() {
       );
     });
 
-    socket.on('productoEliminado', (data) => {
+    socket.on("productoEliminado", async (data) => {
       setPromociones((prevPromociones) =>
-        prevPromociones.filter((producto) => producto.codigo !== data.producto.codigo)
+        prevPromociones.filter(
+          (producto) => producto.codigo !== data.producto.codigo
+        )
       );
     });
 
     return () => {
-      socket.off('connect');
-      socket.off('disconnect');
-      socket.off('productoCreado');
-      socket.off('productoActualizado');
-      socket.off('productoEliminado');
+      socket.off("connect");
+      socket.off("disconnect");
+      socket.off("productoCreado");
+      socket.off("productoActualizado");
+      socket.off("productoEliminado");
     };
   }, []);
-  
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:8081/productos?page=${page + 1}&limit=${rowsPerPage}`);
+      const response = await axios.get(
+        `http://localhost:8081/productos?page=${
+          page + 1
+        }&limit=${rowsPerPage}&codigo=${searchTerm}`
+      );
       setPromociones(response.data.productos);
       setTotalPages(response.data.totalPages);
       setTotalElements(response.data.totalProductos);
-      console.log(response)
-
     } catch (error) {
-      console.error('Error al obtener los elementos', error);
+      console.error("Error al obtener los elementos", error);
     }
   };
 
@@ -108,7 +114,7 @@ export default function Ptabla() {
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0); 
+    setPage(0);
   };
 
   const handleShowDetails = (product) => {
@@ -117,7 +123,7 @@ export default function Ptabla() {
   };
 
   const handleDeleteDetails = (product) => {
-    console.log(product)
+    console.log(product);
     setDeletemodal(true);
     setSelectedProduct(product);
   };
@@ -133,16 +139,25 @@ export default function Ptabla() {
   return (
     <>
       <div className={styles.contTable}>
+      <TextField
+            id="outlined-basic"
+            label="Codigo"
+            variant="outlined"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            sx={{ margin: 1 }}
+          />
         <TableContainer
           component={Paper}
           sx={{
             width: "60em",
-            mb:'40px',
+            mb: "40px",
             "@media (max-width: 500px)": {
               width: "30em",
             },
           }}
         >
+
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
@@ -155,8 +170,12 @@ export default function Ptabla() {
               {promociones.length > 0 ? (
                 promociones.map((promocion) => (
                   <StyledTableRow key={promocion.codigo}>
-                    <StyledTableCell align="left">{promocion.codigo}</StyledTableCell>
-                    <StyledTableCell align="left">{promocion.modelo}</StyledTableCell>
+                    <StyledTableCell align="left">
+                      {promocion.codigo}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      {promocion.modelo}
+                    </StyledTableCell>
                     <StyledTableCell
                       sx={{
                         display: "flex",
@@ -165,10 +184,20 @@ export default function Ptabla() {
                         flexDirection: "column",
                       }}
                     >
-                      <Button onClick={() => handleShowDetails(promocion)} variant="outlined" color="success" sx={{ mt: '5px', mb: '5px' }}>
+                      <Button
+                        onClick={() => handleShowDetails(promocion)}
+                        variant="outlined"
+                        color="success"
+                        sx={{ mt: "5px", mb: "5px" }}
+                      >
                         Editar
                       </Button>
-                      <Button onClick={() => handleDeleteDetails(promocion)} variant="outlined" color="error" sx={{ mt: '5px', mb: '5px' }}>
+                      <Button
+                        onClick={() => handleDeleteDetails(promocion)}
+                        variant="outlined"
+                        color="error"
+                        sx={{ mt: "5px", mb: "5px" }}
+                      >
                         Eliminar
                       </Button>
                     </StyledTableCell>
@@ -183,14 +212,14 @@ export default function Ptabla() {
               )}
             </TableBody>
             <TablePagination
-              rowsPerPageOptions={[3, 5, 10, 25, { label: 'All', value: -1 }]}
+              rowsPerPageOptions={[3, 5, 10, 25, { label: "All", value: -1 }]}
               colSpan={3}
               count={totalElements}
               rowsPerPage={rowsPerPage}
               page={page}
               SelectProps={{
                 inputProps: {
-                  'aria-label': 'rows per page',
+                  "aria-label": "rows per page",
                 },
                 native: true,
               }}
@@ -199,7 +228,7 @@ export default function Ptabla() {
             />
           </Table>
         </TableContainer>
- 
+
         <ModalDeleteProductos
           product={selectedProduct}
           open={modalDelete}
@@ -209,4 +238,3 @@ export default function Ptabla() {
     </>
   );
 }
-
