@@ -13,8 +13,7 @@ export default function AddPromos() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          textAlign: "center",
-          border: "1px solid",
+          textAlign: "center",  
           marginTop:"20px",
           flexDirection:'column'
         }}

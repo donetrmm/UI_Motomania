@@ -2,6 +2,8 @@ import React from "react";
 import { Grid, Typography} from "@mui/material";
 import ContAdminCard from "./ContAdminCard";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import EncabezadoLeft from './../components/admin/EncabezadoLeft'
+
 const tema = createTheme({
   typography: {
     fontFamily: ["Azeret Mono", "monospace  "].join(","),
@@ -15,25 +17,11 @@ const tema = createTheme({
     },
   },
 });
-export default function MenuAdmin({ cards,titulo }) {
+export default function MenuAdmin({ cards,encabezado }) {
   return (
     <>
     <ThemeProvider theme={tema}>
-    <Typography variant="h3" sx={{
-        textAlign:"center",
-        marginTop:"25px",
-        fontSize:'40px',
-        backgroundColor:'orange',
-        ml:'11%',
-        mr:'11%',
-        mt:'1.2em',
-        borderRadius:'30px 30px 0px 0px',
-        '@media screen and (min-width: 400px)': {
-          fontSize:'50px'
-        },
-    }}>
-        {titulo}
-    </Typography>
+    <EncabezadoLeft encabezado={encabezado} />
     </ThemeProvider>
 
       <Grid

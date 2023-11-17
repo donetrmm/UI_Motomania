@@ -5,10 +5,11 @@ export default function ImgPromos() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8081/promociones?page=1&limit=1');
+        const response = await axios.get('http://localhost:8081/promociones?page=1&limit=10');
         setPromociones(response.data.promociones);
         console.log("dataaaa")
         console.log(response.data)
+        console.log('Segun todas las imgs',response.data.promociones)
         console.log('data url',response.data.promociones.url_imagen_promocion)
         response.data.promociones.forEach(promocion => {
           console.log('for each',promocion.url_imagen_promocion)
@@ -27,8 +28,6 @@ export default function ImgPromos() {
         {promociones.map((promo) =>(
               <img src={`http://localhost:8081/public/images/${promo.url_imagen_promocion}`} alt='logo' width="100%"></img>
         ))}
-        <p>imgs back?</p>
-      
       </div>
     </>
   );

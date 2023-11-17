@@ -9,11 +9,15 @@ export default function TextoEncabezado3({ encabezado }) {
         sx={{
             // Estilos por defecto aquí
             backgroundColor:"orange",
-            borderRadius: "30px 30px 0px 0px",
+            borderRadius: "0px 30px 0px 0px",
             fontSize:'50px',
             textAlign:'start',
             
-            // Media query para pantallas más grandes
+            '@media (min-width:50px)': {
+              fontSize: 18,
+              width:'60%',
+              pl:'1.2em'
+            },
             '@media (min-width:300px)': {
                 fontSize: 30,
                 width:'60%',

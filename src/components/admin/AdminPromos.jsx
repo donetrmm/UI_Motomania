@@ -132,7 +132,7 @@ export default function AdminPromos() {
             component={Paper}
             sx={{
               width: "60em",
-              marginTop:'40px',
+              mb:'40px',
               "@media (max-width: 500px)": {
                 width: "30em",
               },
@@ -141,7 +141,7 @@ export default function AdminPromos() {
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  <StyledTableCell align="left">Nombre </StyledTableCell>
+                  <StyledTableCell align="left">ID </StyledTableCell>
                   <StyledTableCell align="center">Acciones</StyledTableCell>
                 </TableRow>
               </TableHead>
@@ -156,7 +156,7 @@ export default function AdminPromos() {
                         display:'flex',
                         alignItems:'center'
                       }}>
-                        <Typography variant='h4' sx={{mr:'20px'}}>{promo.id_nombre_promocion}</Typography>
+                        <Typography variant='h4' sx={{mr:'2em'}}>{promo.id_nombre_promocion}</Typography>
                         <img src={`http://localhost:8081/public/images/${promo.url_imagen_promocion}`} alt='logo' width="40%"></img>
                       </Box>
                       

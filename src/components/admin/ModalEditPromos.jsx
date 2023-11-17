@@ -35,8 +35,9 @@ export default function ModalEditPromos({ promo, open, onClose }) {
 
     const headers = {
       'Content-Type': 'multipart/form-data',
-      Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InVzdWFyaW8iOiJ1c3VhcmlvMiIsImlkIjoiNjU1NDNlYTNiNGMzZmIxMWQ4YzBhZWMwIn0sImlhdCI6MTcwMDEyMzMzOCwiZXhwIjoxNzAwMTMwNTM4fQ.54sgyG4iE3NtJ9ArTSjV53SlHCaiIz8qomUtv6o5cfE', // Reemplaza con tu token
-    };
+      Authorization:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InVzdWFyaW8iOiJ1c3VhcmlvMiIsImlkIjoiNjU1Mjc3OTQwYTg3YTZlNDY3NTFhNTMyIn0sImlhdCI6MTcwMDE1MTk0NywiZXhwIjoxNzAwMTU5MTQ3fQ.duigsQ6SaAgfijUOTqsJDMJXzwIxwF-X7fh96SkvOzk", // Reemplaza con tu token
+  };
 
     try {
       await axios.put(`http://localhost:8081/promociones/${promo.id_nombre_promocion}`, formData, { headers });

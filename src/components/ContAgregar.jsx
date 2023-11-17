@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Grid,Button } from "@mui/material";
 import SelectProduc from "./admin/SelectProduc";
 import Pruebasss from "./Pruebasss";
 import ContIn from "./ContIn";
@@ -20,7 +20,13 @@ export default function ContAgregar() {
         }}
       >
       <Pruebasss />
-      <ContIn />
+      
+      <Grid item={12}>
+        <Button variant="outlined" color="success" sx={{ mt: 3, mb: 4 }}>
+          Guardar
+        </Button>
+      </Grid>
+      
       </Grid>
     </>
   );

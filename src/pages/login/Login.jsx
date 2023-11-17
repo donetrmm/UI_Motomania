@@ -1,21 +1,22 @@
-import React from "react";
-import { Grid, Button, TextField } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Grid, Button } from "@mui/material";
 import Navbar from "./../../components/Navbar";
 import EncabezadoLeft from "../../components/admin/EncabezadoLeft";
-import InputLog from "../../components/admin/InputLog";
-import BtnLog from "../../components/admin/BtnLog";
+
+
 import { useForm } from "react-hook-form";
+import InputNombre from "../../components/admin/InputNombre";
+import InputApellido from "../../components/admin/InputApellido";
+import InputUsuario from "../../components/admin/InputUsuario";
+import InputPasswd from "../../components/admin/InputPasswd";
 
 const encabezado = "Iniciar Sesion";
-const inputNomApe = [
-  { label: "Nombre", type: "text" },
-  { label: "Apellido", type: "text" },
-];
-const inputUserpass = [
-  { label: "Usuario", type: "text" },
-  { label: "Password", type: "password" },
-];
+
 export default function Login() {
+  const [nombre, setNombre] = useState([]);
+  const [apellido, setApellido] = useState([]);
+  const [usuario, setUsuario] = useState([]);
+  const [password, setPassword] = useState([]);
   const { register, handleSubmit } = useForm();
   return (
     <>
@@ -36,43 +37,17 @@ export default function Login() {
         >
           <EncabezadoLeft encabezado={encabezado} />
           <form
-            onSubmit={handleSubmit((values) => {
-              console.log(values);
-            })}
+     
           >
             <Grid item={12}>
-              <TextField
-                label="Nombre"
-                type="text"
-                {...register("username", { required: true })}
-                sx={{m:'10px'}}
-              />
-
-              <TextField
-                label="apellido"
-                type="text"
-                {...register("userapellido", { required: true })}
-                sx={{m:'10px'}}
-              />
-            </Grid>
-            <Grid item={12}>
-            <TextField
-                label="Usuario"
-                type="text"
-                {...register("useruser", { required: true })}
-                sx={{m:'10px'}}
-              />
-
-              <TextField
-                label="Contraseña"
-                type="password"
-                {...register("userpasswd", { required: true })}
-                sx={{m:'10px'}}
-              />
+              <InputUsuario usuario={usuario} setUsuario={setUsuario} />
+              <InputPasswd password={password} setPassword={setPassword} />
             </Grid>
 
             <Grid item={12}>
-              <BtnLog />
+              <Button variant="outlined" type="submit" sx={{ m: "20px" }}>
+                Iniciar Sesion
+              </Button>
             </Grid>
           </form>
         </Grid>
