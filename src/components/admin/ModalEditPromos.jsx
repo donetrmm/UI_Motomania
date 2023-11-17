@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import TextField from "@mui/material/TextField";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { styled } from '@mui/material/styles';
 
@@ -33,17 +32,16 @@ export default function ModalEditPromos({ promo, open, onClose }) {
     const formData = new FormData();
     formData.append('imagen', imagen);
 
+    const token = sessionStorage.getItem('token');
     const headers = {
       'Content-Type': 'multipart/form-data',
-      Authorization:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InVzdWFyaW8iOiJ1c3VhcmlvMiIsImlkIjoiNjU1Mjc3OTQwYTg3YTZlNDY3NTFhNTMyIn0sImlhdCI6MTcwMDE1MTk0NywiZXhwIjoxNzAwMTU5MTQ3fQ.duigsQ6SaAgfijUOTqsJDMJXzwIxwF-X7fh96SkvOzk", // Reemplaza con tu token
-  };
+      Authorization: token,
+    };
 
     try {
       await axios.put(`http://localhost:8081/promociones/${promo.id_nombre_promocion}`, formData, { headers });
 
-
-      onClose(); 
+      onClose();
     } catch (error) {
       console.error('Error al editar la promo:', error);
     }

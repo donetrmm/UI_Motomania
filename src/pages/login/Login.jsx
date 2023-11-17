@@ -1,23 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Grid, Button } from "@mui/material";
 import Navbar from "./../../components/Navbar";
 import EncabezadoLeft from "../../components/admin/EncabezadoLeft";
-
-
 import { useForm } from "react-hook-form";
-import InputNombre from "../../components/admin/InputNombre";
-import InputApellido from "../../components/admin/InputApellido";
 import InputUsuario from "../../components/admin/InputUsuario";
 import InputPasswd from "../../components/admin/InputPasswd";
+import axios from "axios";
 
 const encabezado = "Iniciar Sesion";
 
 export default function Login() {
-  const [nombre, setNombre] = useState([]);
-  const [apellido, setApellido] = useState([]);
-  const [usuario, setUsuario] = useState([]);
-  const [password, setPassword] = useState([]);
+  const [usuario, setUsuario] = useState("");
+  const [password, setPassword] = useState("");
   const { register, handleSubmit } = useForm();
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post("http://localhost:8081/auth/login", {
+        usuario,
+        password,
+      });
+
+      const token = response.data.token;
+      if (token) {
+        sessionStorage.setItem("token", token);
+        window.location.assign('/HomeAdmin');
+      }
+    } catch (error) {
+      console.error("Error al iniciar sesión", error);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -36,17 +49,23 @@ export default function Login() {
           }}
         >
           <EncabezadoLeft encabezado={encabezado} />
-          <form
-     
-          >
+          <form onSubmit={handleSubmit(handleLogin)}>
             <Grid item={12}>
-              <InputUsuario usuario={usuario} setUsuario={setUsuario} />
-              <InputPasswd password={password} setPassword={setPassword} />
+              <InputUsuario
+                usuario={usuario}
+                setUsuario={setUsuario}
+                {...register("usuario")}
+              />
+              <InputPasswd
+                password={password}
+                setPassword={setPassword}
+                {...register("password")}
+              />
             </Grid>
 
             <Grid item={12}>
               <Button variant="outlined" type="submit" sx={{ m: "20px" }}>
-                Iniciar Sesion
+                Iniciar Sesión
               </Button>
             </Grid>
           </form>

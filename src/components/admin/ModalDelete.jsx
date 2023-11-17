@@ -21,10 +21,10 @@ export default function ModalDelete({ promo, open, onClose }) {
   }, []);
 
   const deletePromo = async () => {
+    const token = sessionStorage.getItem('token');
     const headers = {
       'Content-Type': 'application/json',
-      Authorization:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InVzdWFyaW8iOiJ1c3VhcmlvMiIsImlkIjoiNjU1Mjc3OTQwYTg3YTZlNDY3NTFhNTMyIn0sImlhdCI6MTcwMDE1MTk0NywiZXhwIjoxNzAwMTU5MTQ3fQ.duigsQ6SaAgfijUOTqsJDMJXzwIxwF-X7fh96SkvOzk", // Reemplaza con tu token
+      Authorization: token,
     };
 
     try {

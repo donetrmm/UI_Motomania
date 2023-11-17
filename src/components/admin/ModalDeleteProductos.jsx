@@ -5,44 +5,42 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
-export default function ModalDeleteproducts({product, open, onClose }) {
-    const [products, setProducts] = useState([]);
+export default function ModalDeleteProducts({ product, open, onClose }) {
+  const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get('http://localhost:8081/productos?page=1&limit=10');
-          setProducts(response.data.products);
-        } catch (error) {
-          console.error('Error al obtener los elementos', error);
-        }
-      };
-      fetchData();
-    }, []);
-  
-    const deleteproduct = async () => {
-      const headers = {
-        'Content-Type': 'application/json',
-        Authorization:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InVzdWFyaW8iOiJ1c3VhcmlvMiIsImlkIjoiNjU1Mjc3OTQwYTg3YTZlNDY3NTFhNTMyIn0sImlhdCI6MTcwMDE1ODgzMywiZXhwIjoxNzAwMTY2MDMzfQ.lHOTjB38uzssm28e-LOTqrx_Hcdqqnq81lvz1Efjod8", // Reemplaza con tu token
-    };
-  
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-        await axios.delete(`http://localhost:8081/productos/${product.codigo}`, { headers });
-        setProducts((prevPromociones) => prevPromociones.filter((p) => p.codigo !== product.codigo));
-        onClose();
-        window.location.assign('/AdministrarProductos');
+        const response = await axios.get('http://localhost:8081/productos?page=1&limit=10');
+        setProducts(response.data.products);
       } catch (error) {
-        console.error('Error al eliminar la product:', error);
+        console.error('Error al obtener los elementos', error);
       }
     };
-  
-    if (!product) {
-      return null; 
+    fetchData();
+  }, []);
+
+  const deleteProduct = async () => {
+    const token = sessionStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: token,
+    };
+
+    try {
+      await axios.delete(`http://localhost:8081/productos/${product.codigo}`, { headers });
+      onClose();
+    } catch (error) {
+      console.error('Error al eliminar el producto:', error);
     }
+  };
+
+  if (!product) {
+    return null; 
+  }
+
   return (
-    <>
-     <Modal open={open} onClose={onClose}>
+    <Modal open={open} onClose={onClose}>
       <Box sx={{
         position: 'absolute',
         top: '50%',
@@ -62,11 +60,10 @@ export default function ModalDeleteproducts({product, open, onClose }) {
           {product.modelo}
         </Typography>
 
-        <Button variant="outlined" color='error' sx={{ marginBottom: 2 }} onClick={deleteproduct}>
+        <Button variant="outlined" color='error' sx={{ marginBottom: 2 }} onClick={deleteProduct}>
           Eliminar {product.modelo}
         </Button>
       </Box>
     </Modal>
-    </>
-  )
+  );
 }
