@@ -14,12 +14,18 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import Logo from "../Logo";
 import PersonIcon from "@mui/icons-material/Person";
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import LogoutIcon from '@mui/icons-material/Logout';
 
+import { Grid } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
+const settings = [
+    {icono:PersonAddIcon,link:'/IniciarSesion'},
+    {icono:LogoutIcon,link:'/IniciarSesion'},
+];
+const oragn = "#FFA424";
 const theme = createTheme({
   palette: {
     primary: {
@@ -33,8 +39,8 @@ const theme = createTheme({
 const logo = {
   src: "/logoBlack.jpg",
   alt: "logo",
-  width: "150",
-  height: "125",
+  width: "145",
+  height: "120",
 };
 export default function NavBarAdmin() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -56,14 +62,15 @@ export default function NavBarAdmin() {
   };
   return (
     <ThemeProvider theme={theme}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{boxSizing:'border-box'}}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Box
+            <Grid
+            item={12}
               sx={{
                 flexGrow: 0,
                 display: {
-                  xs: "flex",
+                  xs: "column",
                   md: "flex",
                   display: "flex",
                   justifyContent: "space-between",
@@ -73,29 +80,52 @@ export default function NavBarAdmin() {
                 },
               }}
             >
-              <Logo logo={logo} />
-              <Box sx={{
-                display:'flex',
-                justifyContent:'center',
-                alignItems:'center',
-                
-         
-  
-                  
+                <Grid item={6}>
+                <Logo logo={logo} />
+                </Grid>
+              
+              <Grid
+              item={6}
+                sx={{
+                    display: {
+                        xs: "column",
+                        md: "flex",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems:'center',
 
-              }}>
-                <Typography variant="h6">
-                    Catalogo
-                </Typography>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar>
-                    <PersonIcon />
-                  </Avatar>
-                </IconButton>
-              </Tooltip>
-              </Box>
-       
+                          '@media (min-width:900px)': {
+                            display: "flex",
+                          },
+
+                      },
+
+                }}
+              >
+                <Typography variant="h6" sx={{
+                        mr:'30px',
+                        fontSize:'50px',
+                        color:'#FFA424',
+
+                        '@media (min-width:150px)': {
+                            fontSize:'10px',
+                            mr:'5px'
+                          },
+                          '@media (min-width:370px)': {
+                            fontSize:'30px',
+                            mr:'30px',
+                           
+                          },
+
+                }}>Catalogo</Typography>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar>
+                      <PersonIcon />
+                    </Avatar>
+                  </IconButton>
+                </Tooltip>
+              </Grid>
 
               <Menu
                 sx={{ mt: "45px" }}
@@ -115,11 +145,14 @@ export default function NavBarAdmin() {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <a href={setting.link} >
+                    <setting.icono fontSize='large' color="orange" />
+                    </a>
+                   
                   </MenuItem>
                 ))}
               </Menu>
-            </Box>
+            </Grid>
           </Toolbar>
         </Container>
       </AppBar>
