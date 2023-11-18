@@ -6,6 +6,9 @@ import { useForm } from "react-hook-form";
 import InputUsuario from "../../components/admin/InputUsuario";
 import InputPasswd from "../../components/admin/InputPasswd";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const encabezado = "Iniciar Sesion";
 
@@ -24,10 +27,10 @@ export default function Login() {
       const token = response.data.token;
       if (token) {
         sessionStorage.setItem("token", token);
-        window.location.assign('/HomeAdmin');
+        window.location.assign("/HomeAdmin");
       }
     } catch (error) {
-      console.error("Error al iniciar sesión", error);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -48,6 +51,17 @@ export default function Login() {
             flexDirection: "column",
           }}
         >
+          <ToastContainer
+            position="bottom-center"
+            autoClose={4000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            theme="dark"
+          />
           <EncabezadoLeft encabezado={encabezado} />
           <form onSubmit={handleSubmit(handleLogin)}>
             <Grid item={12}>
