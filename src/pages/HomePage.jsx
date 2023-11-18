@@ -44,7 +44,6 @@ export default function HomePage() {
           subtitulo={subtitulo}
           titulohash={titulohash}
         />
-        <ImgCompo imgCompo={imgPromo1} />
         <ImgPromos />
         <Footer />
       </main>
