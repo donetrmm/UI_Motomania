@@ -1,0 +1,81 @@
+
+.slider-image {
+    width: 70%;
+    align-self: center;
+    padding-top: 20%;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding-bottom: 20%;
+  }
+
+  .aws-btn {
+    --slider-height-percentage: 40%;
+    --slider-transition-duration: 770ms;
+    --organic-arrow-thickness: 4px;
+    --organic-arrow-border-radius: 5px;
+    --organic-arrow-height: 40px;
+    --organic-arrow-color: #545454;
+    --control-button-width: 10%;
+    --control-button-height: 80%;
+    --control-button-background: transparent;
+    --control-bullet-color: #ffffff;
+    --control-bullet-active-color: #a86b00;
+    --loader-bar-color: transparent;
+    --loader-bar-height: 0px;
+    --content-background-color: transparent;
+    }
+
+  @media (max-width: 720px) {
+    .slider-image {
+      width: 100%;
+      margin-left: 0%;
+      margin-right:0%;
+      padding-bottom: 0%;
+      padding-top: 0%;
+    }
+    .aws-btn {
+        --slider-height-percentage: 100%;
+        --slider-transition-duration: 770ms;
+        --organic-arrow-thickness: 4px;
+        --organic-arrow-border-radius: 5px;
+        --organic-arrow-height: 40px;
+        --organic-arrow-color: #545454;
+        --control-button-width: 10%;
+        --control-button-height: 80%;
+        --control-button-background: transparent;
+        --control-bullet-color: #ffffff;
+        --control-bullet-active-color: #a86b00;
+        --loader-bar-color: transparent;
+        --loader-bar-height: 0px;
+        --content-background-color: transparent;
+        }
+  }
+
+
+  @media (max-width: 1600px) {
+    .slider-image {
+      width: 70%;
+      margin-left: 15%;
+      margin-right:15%;
+      padding-bottom: 0%;
+      padding-top: 0%;
+
+    }
+
+      .aws-btn {
+    --slider-height-percentage: 80%;
+    --slider-transition-duration: 770ms;
+    --organic-arrow-thickness: 4px;
+    --organic-arrow-border-radius: 5px;
+    --organic-arrow-height: 40px;
+    --organic-arrow-color: #545454;
+    --control-button-width: 10%;
+    --control-button-height: 80%;
+    --control-button-background: transparent;
+    --control-bullet-color: #ffffff;
+    --control-bullet-active-color: #a86b00;
+    --loader-bar-color: transparent;
+    --loader-bar-height: 0px;
+    --content-background-color: transparent;
+    }
+  }
