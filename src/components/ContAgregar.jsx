@@ -21,11 +21,6 @@ export default function ContAgregar() {
       >
       <Pruebasss />
       
-      <Grid item={12}>
-        <Button variant="outlined" color="success" sx={{ mt: 3, mb: 4 }}>
-          Guardar
-        </Button>
-      </Grid>
       
       </Grid>
     </>

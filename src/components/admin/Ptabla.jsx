@@ -9,12 +9,11 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import TablePagination from "@mui/material/TablePagination";
-import Pmo from "./Pmo";
-import ModalDelete from "./ModalDelete";
 import ModalDeleteProductos from "./ModalDeleteProductos";
-import styles from "./../../styles/ejemAdmin.module.css";
-import axios from "axios";
 import { TextField } from "@mui/material";
+import EditarProductoModal from "./EditarProductoModal"; // Asegúrate de importar tu componente EditarProductoModal
+import axios from "axios";
+import styles from "./../../styles/ejemAdmin.module.css";
 
 const io = require("socket.io-client");
 
@@ -40,6 +39,7 @@ export default function Ptabla() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [modalDelete, setDeletemodal] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false); // Nuevo estado
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [totalPages, setTotalPages] = useState(1);
@@ -122,8 +122,12 @@ export default function Ptabla() {
     setSelectedProduct(product);
   };
 
+  const handleEditDetails = (product) => {
+    setEditModalOpen(true);
+    setSelectedProduct(product);
+  };
+
   const handleDeleteDetails = (product) => {
-    console.log(product);
     setDeletemodal(true);
     setSelectedProduct(product);
   };
@@ -139,14 +143,14 @@ export default function Ptabla() {
   return (
     <>
       <div className={styles.contTable}>
-      <TextField
-            id="outlined-basic"
-            label="Codigo"
-            variant="outlined"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            sx={{ margin: 1 }}
-          />
+        <TextField
+          id="outlined-basic"
+          label="Codigo"
+          variant="outlined"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          sx={{ margin: 1 }}
+        />
         <TableContainer
           component={Paper}
           sx={{
@@ -170,12 +174,8 @@ export default function Ptabla() {
               {promociones.length > 0 ? (
                 promociones.map((promocion) => (
                   <StyledTableRow key={promocion.codigo}>
-                    <StyledTableCell align="left">
-                      {promocion.codigo}
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      {promocion.modelo}
-                    </StyledTableCell>
+                    <StyledTableCell align="left">{promocion.codigo}</StyledTableCell>
+                    <StyledTableCell align="left">{promocion.modelo}</StyledTableCell>
                     <StyledTableCell
                       sx={{
                         display: "flex",
@@ -185,7 +185,7 @@ export default function Ptabla() {
                       }}
                     >
                       <Button
-                        onClick={() => handleShowDetails(promocion)}
+                        onClick={() => handleEditDetails(promocion)} // Cambiado a handleEditDetails
                         variant="outlined"
                         color="success"
                         sx={{ mt: "5px", mb: "5px" }}
@@ -228,6 +228,14 @@ export default function Ptabla() {
             />
           </Table>
         </TableContainer>
+
+        {/* Agregamos el modal de edición */}
+        {editModalOpen && (
+          <EditarProductoModal
+            product={selectedProduct}
+            onClose={() => setEditModalOpen(false)}
+          />
+        )}
 
         <ModalDeleteProductos
           product={selectedProduct}
