@@ -13,9 +13,10 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import Logo from "../Logo";
-import PersonIcon from "@mui/icons-material/Person";
+import PersonIcon from '@mui/icons-material/Person';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import LogoutIcon from '@mui/icons-material/Logout';
+import axios from "axios";
 
 import { Grid } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -60,6 +61,12 @@ export default function NavBarAdmin() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const outToken = () => {
+    sessionStorage.removeItem('token');
+    window.location.assign('/IniciarSesion');
+  };
+  
   return (
     <ThemeProvider theme={theme}>
       <AppBar position="static" sx={{boxSizing:'border-box'}}>
@@ -118,9 +125,9 @@ export default function NavBarAdmin() {
                           },
 
                 }}>Catalogo</Typography>
-                <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar>
+                <Tooltip title="Open settings" >
+                  <IconButton  onClick={handleOpenUserMenu} >
+                    <Avatar sx={{ bgcolor: '#FFA424' }} variant="rounded" >
                       <PersonIcon />
                     </Avatar>
                   </IconButton>
@@ -143,14 +150,22 @@ export default function NavBarAdmin() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <a href={setting.link} >
-                    <setting.icono fontSize='large' color="orange" />
-                    </a>
+              
+                  <MenuItem  sx={{
+                    flexDirection:'column'
+                  }} onClick={handleCloseUserMenu}>
+                   <a href="/IniciarSesion">
+                   <PersonAddIcon fontSize='large' color="orange" />
+                   </a>
+                   
+                  <div>
+                  <LogoutIcon fontSize='large' color="orange" onClick={outToken} />
+                  </div>
+                  
+              
                    
                   </MenuItem>
-                ))}
+      
               </Menu>
             </Grid>
           </Toolbar>
