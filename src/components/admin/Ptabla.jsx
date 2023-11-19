@@ -215,7 +215,7 @@ export default function Ptabla() {
               )}
             </TableBody>
             <TablePagination
-              rowsPerPageOptions={[3, 5, 10, 25, { label: "All", value: -1 }]}
+              rowsPerPageOptions={[3, 5, 10, 25, 50, { label: "All", value: undefined }]}
               colSpan={3}
               count={totalElements}
               rowsPerPage={rowsPerPage}

@@ -31,7 +31,7 @@ export default function ImgPromos() {
       className="slider aws-btn"
       play={true}
       cancelOnInteraction={true}
-      interval={5000}
+      interval={4000}
       infinite={true}
       timerHeight={0}
     >
