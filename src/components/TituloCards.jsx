@@ -6,6 +6,7 @@ export default function TituloCards({nombre}) {
       <Typography gutterBottom variant="h4">
         {nombre}
       </Typography>
+      
     </>
   );
 }

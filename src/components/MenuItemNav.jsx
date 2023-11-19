@@ -8,6 +8,10 @@ export default function MenuItemNav({ pages }) {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+  const handleClick = (produc) => {
+    localStorage.setItem('produc', produc);
+    window.location = '/Productos';
+  };
   return (
     <>
       {Object.values(pages).map((item, index) => (
@@ -30,6 +34,7 @@ export default function MenuItemNav({ pages }) {
               margin: "3px",
               border: "1px solid",
             }}
+            onClick={() => handleClick(item.id)}
           >
             {item.tit}
           </Button>

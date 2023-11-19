@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PruebaAdmin from '../../components/PruebaAdmin';
+import NavBarAdmin from './../../components/admin/NavBarAdmin'
 import Navbar from '../../components/Navbar';
 
 const AdministrarProductos = () => {
@@ -18,7 +19,7 @@ const AdministrarProductos = () => {
 
   return (
     <>
-      <Navbar />
+      <NavBarAdmin />
       {authenticated && <PruebaAdmin />}
     </>
   );

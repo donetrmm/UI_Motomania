@@ -1,40 +1,81 @@
-import React from 'react'
-import { useParams } from 'react-router-dom';
-import Navbar from '../components/Navbar'
-import TituloProducto from '../components/TituloProducto'
-import ContProductos from '../components/ContProductos'
-import Footer from '../components/Footer'
-import PaginationCompo from '../components/PaginationCompo'
+import React, { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import TituloProducto from "../components/TituloProducto";
+import ContProductos from "../components/ContProductos";
+import Footer from "../components/Footer";
+import PaginationCompo from "../components/PaginationCompo";
+import axios from "axios";
 
-const titProducto = 'Cascos'
-export default function Productos({cards}) {
-  const { id } = useParams();
-  const tarjeta = cards.find((card) => card.id === id);
-  
+const titProducto = "Cascos";
+export default function Productos({ itemId, algo }) {
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalElements, setTotalElements] = useState(0);
+  const [productos, setProductos] = useState([]);
+
+  const [cont, setCont] = useState([]);
+  const productoRecibido = localStorage.getItem("produc");
+
+  useEffect(() => {
+    console.log("id mandado", algo);
+    console.log("id SEGUN NUEVO", algo);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8081/productos/categorias/${productoRecibido}`
+        );
+
+        const productos = response.data || [];
+        setProductos(productos);
+        console.log("productos de la db", productos);
+      } catch (error) {
+        console.error("Error al obtener los elementos", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  const cards = [
+    {
+      id: "1",
+      nombre: "Casco",
+      url: "https://cdn1.coppel.com/images/catalog/pm/5366033-1.jpg",
+      atributos: ["atributo 1", "atributo 2", "atributo 3"],
+    },
+    {
+      id: "2",
+      nombre: "Casco222",
+      url: "https://cdn1.coppel.com/images/catalog/pm/5366033-1.jpg",
+      atributos: ["atributo 11", "atributo 22", "atributo 33"],
+    },
+  ];
   return (
     <>
-    <Navbar/>
-    <main>
-    <TituloProducto titProducto={titProducto} />
-    <ContProductos cards={cards} />
-    <PaginationCompo />
-    {tarjeta ? (
-        <div>
-          <h2>{tarjeta.nombre}</h2>
-          <img src={tarjeta.url} alt={tarjeta.nombre} width="20%" />
-          <ul>
-            {tarjeta.atributos.map((atributo, index) => (
-              <li key={index}>{atributo}</li>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <p>Tarjeta no encontrada</p>
-      )}
-    <Footer />
-    </main>
+      <Navbar />
+      <main>
+        <TituloProducto titProducto={productoRecibido} />
+        <ContProductos cards={productos} />
+        <PaginationCompo />
+        <h1>{itemId}</h1>
+        <p>{algo}</p>
+
+        {productos &&
+          productos.map((producto) => (
+            <div key={producto.codigo}>
+              <img
+                src={`http://localhost:8081/public/images/${producto.url_imagen}`}
+                alt="imagen de la db"
+                width="200px"
+              ></img>
+              <p>{producto.url_imagen}</p>
+            </div>
+          ))}
+
+        <Footer />
+      </main>
     </>
-  )
+  );
 }
-/*
-*/ 
+

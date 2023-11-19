@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from './../../components/Navbar'
 import AdminPromos from '../../components/admin/AdminPromos'
 import EncabezadoLeft from './../../components/admin/EncabezadoLeft'
+import NavBarAdmin from './../../components/admin/NavBarAdmin'
 const encabezado = 'Administrar Promociones'
 
 const AdministrarPromos = () => {
@@ -20,7 +21,7 @@ const AdministrarPromos = () => {
 
   return (
     <>
-      <Navbar />
+      <NavBarAdmin />
       <main>
         {authenticated && <EncabezadoLeft encabezado={encabezado} />}
         {authenticated && <AdminPromos />}

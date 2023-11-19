@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
+import NavBarAdmin from './../../components/admin/NavBarAdmin'
 import TituloAdmin from "../../components/TituloAdmin";
 import MenuAdmin from "../../components/MenuAdmin";
 
@@ -53,7 +54,7 @@ const HomeAdmin = () => {
 
   return (
     <>
-      <Navbar />
+      <NavBarAdmin />
       <main>
         <TituloAdmin titulo={tit1} />
         {authenticated && (

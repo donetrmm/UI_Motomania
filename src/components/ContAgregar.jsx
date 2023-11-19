@@ -14,8 +14,8 @@ export default function ContAgregar() {
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
-          border: "1px solid",
           marginTop:"20px",
+          marginBottom:'2em',
           flexDirection:'column'
         }}
       >

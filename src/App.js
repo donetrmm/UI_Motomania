@@ -10,6 +10,7 @@ import AdministrarPromos from "./pages/admin/AdministrarPromos";
 import AgregarPromos from "./pages/admin/AgregarPromos";
 import Login from "./pages/login/Login";
 import Register from "./pages/login/Register";
+import Intento from "./pages/admin/Intento";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const cards = [
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="AdministrarPromos" element={<AdministrarPromos />} />
           <Route path="IniciarSesion" element={<Login />} />
           <Route path="RegistrarUsuario" element={<Register />} />
+          <Route path="Intento" element={<Intento />} />
         </Routes>
       </BrowserRouter>
     </div>
