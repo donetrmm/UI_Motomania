@@ -14,16 +14,17 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import Logo from "../Logo";
 import PersonIcon from "@mui/icons-material/Person";
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import LogoutIcon from '@mui/icons-material/Logout';
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import LogoutIcon from "@mui/icons-material/Logout";
+import axios from "axios";
 
 import { Grid } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = [
-    {icono:PersonAddIcon,link:'/IniciarSesion'},
-    {icono:LogoutIcon,link:'/IniciarSesion'},
+  { icono: PersonAddIcon, link: "/IniciarSesion" },
+  { icono: LogoutIcon, link: "/IniciarSesion" },
 ];
 const oragn = "#FFA424";
 const theme = createTheme({
@@ -41,7 +42,9 @@ const logo = {
   alt: "logo",
   width: "145",
   height: "120",
+  link: "/HomeAdmin",
 };
+
 export default function NavBarAdmin() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -60,13 +63,19 @@ export default function NavBarAdmin() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const outToken = () => {
+    sessionStorage.removeItem("token");
+    window.location.assign("/IniciarSesion");
+  };
+
   return (
     <ThemeProvider theme={theme}>
-      <AppBar position="static" sx={{boxSizing:'border-box'}}>
+      <AppBar position="static" sx={{ boxSizing: "border-box" }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Grid
-            item={12}
+              item={12}
               sx={{
                 flexGrow: 0,
                 display: {
@@ -80,48 +89,58 @@ export default function NavBarAdmin() {
                 },
               }}
             >
-                <Grid item={6}>
+              <Grid item={6}>
                 <Logo logo={logo} />
-                </Grid>
-              
+              </Grid>
+
               <Grid
-              item={6}
+                item={6}
                 sx={{
-                    display: {
-                        xs: "column",
-                        md: "flex",
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems:'center',
+                  display: {
+                    xs: "column",
+                    md: "flex",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
 
-                          '@media (min-width:900px)': {
-                            display: "flex",
-                          },
-
-                      },
-
+                    "@media (min-width:900px)": {
+                      display: "flex",
+                    },
+                  },
                 }}
               >
-                <Typography variant="h6" sx={{
-                        mr:'30px',
-                        fontSize:'50px',
-                        color:'#FFA424',
+                <Typography
+                  variant="h6"
+                  sx={{
+                    mr: "30px",
+                    fontSize: "50px",
+                    color: "#FFA424",
 
-                        '@media (min-width:150px)': {
-                            fontSize:'10px',
-                            mr:'5px'
-                          },
-                          '@media (min-width:370px)': {
-                            fontSize:'30px',
-                            mr:'30px',
-                           
-                          },
-
-                }}>Catalogo</Typography>
-                <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar>
-                      <PersonIcon />
+                    "@media (min-width:150px)": {
+                      fontSize: "10px",
+                      mr: "5px",
+                    },
+                    "@media (min-width:370px)": {
+                      fontSize: "30px",
+                      mr: "30px",
+                    },
+                  }}
+                >
+                  Catalogo
+                </Typography>
+                <Tooltip title="Mas Opciones">
+                  <IconButton onClick={handleOpenUserMenu}>
+                    <Avatar
+                      sx={{
+                        bgcolor: "#000000",
+                        transition: ".5s all ease",
+                        "&:hover": {
+                          color: "#FFA424",
+                        },
+                      }}
+                      variant="rounded"
+                    >
+                      <PersonIcon sx={{ fontSize: "40px" }} />
                     </Avatar>
                   </IconButton>
                 </Tooltip>
@@ -143,14 +162,24 @@ export default function NavBarAdmin() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <a href={setting.link} >
-                    <setting.icono fontSize='large' color="orange" />
-                    </a>
-                   
-                  </MenuItem>
-                ))}
+                <MenuItem
+                  sx={{
+                    flexDirection: "column",
+                  }}
+                  onClick={handleCloseUserMenu}
+                >
+                  <a href="/IniciarSesion">
+                    <PersonAddIcon fontSize="large" color="orange" />
+                  </a>
+
+                  <div>
+                    <LogoutIcon
+                      fontSize="large"
+                      color="orange"
+                      onClick={outToken}
+                    />
+                  </div>
+                </MenuItem>
               </Menu>
             </Grid>
           </Toolbar>

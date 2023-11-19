@@ -38,11 +38,11 @@ const cards = [
 ];
 
 const pages = {
-  item1: { id:1,tit: "cascos", href: "/productos" },
-  item2: { id:2,tit: "maletas", href: "/productos" },
-  item3: { id:3,tit: "accesorios", href: "/productos" },
-  item4: { id:4,tit: "equipo personal", href: "/productos" },
-  item5: { id:5,tit: "llantas", href: "/productos" },
+  item1: { id:"cascos",tit: "cascos", href: "/productos" },
+  item2: { id:"maletas",tit: "maletas", href: "/productos" },
+  item3: { id:"accesorios",tit: "accesorios", href: "/productos" },
+  item4: { id:"equipo_personal",tit: "equipo personal", href: "/productos" },
+  item5: { id:"llantas",tit: "llantas", href: "/productos" },
 };
 
 const logo = {
@@ -50,6 +50,7 @@ const logo = {
     alt: "logo",
     width: "150",
     height: "125",
+    link:'/'
   };
 export default function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./../../components/Navbar";
+import NavBarAdmin from './../../components/admin/NavBarAdmin'
 import ContAgregar from "./../../components/ContAgregar";
 
 const AgregarProductos = () => {
@@ -18,7 +18,7 @@ const AgregarProductos = () => {
 
   return (
     <>
-      <Navbar />
+      <NavBarAdmin />
       <main>
         {authenticated && <ContAgregar />}
       </main>

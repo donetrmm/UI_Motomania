@@ -5,7 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import Grid from "@mui/material/Grid";
-import { Typography, Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { styled } from "@mui/material/styles";
 import EncabezadoLeft from "./../components/admin/EncabezadoLeft";
@@ -245,20 +245,11 @@ export default function Pruebasss() {
 
       {selectedProduct && (
         <>
-          <Grid item={6}>
-            <Typography
-              variant="h4"
-              sx={{
-                backgroundColor: "orange",
-                ml: "11%",
-                mr: "11%",
-                mt: ".4em",
-                mb: ".4em",
-                borderRadius: "30px 30px 0px 0px",
-              }}
-            >
-              {selectedProduct.name}
-            </Typography>
+          <Grid item={12} sx={{
+            width:'100%',
+            mb:'2em'
+          }}>
+          <EncabezadoLeft encabezado={selectedProduct.name} />
             {selectedProduct.propiedades.map((propiedades) => (
               <div key={propiedades.label}>
                 {propiedades.label === "Talla" && (
@@ -318,7 +309,9 @@ export default function Pruebasss() {
               value={marca}
               onChange={(e) => handleAttributeChange("Marca", e.target.value)}
             />
-            <div>
+            <Box sx={{
+              m:'15px'
+            }}>
               <Button
                 variant="outlined"
                 startIcon={<CloudUploadIcon />}
@@ -331,10 +324,11 @@ export default function Pruebasss() {
                   name="imagen"
                 />
               </Button>
-            </div>
+            </Box>
             <Button
               variant="contained"
-              color="primary"
+              color="success"
+              sx={{m:'10px',fontSize:'20px'}}
               onClick={handleAddProduct}
             >
               Agregar Producto

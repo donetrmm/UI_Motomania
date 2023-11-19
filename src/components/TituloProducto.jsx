@@ -14,7 +14,11 @@ const theme = createTheme({
     fontFamily: ["Architects Daughter", "cursive  "].join(","),
   },
 });
+
 export default function TituloProducto({titProducto}) {
+  if(titProducto === 'equipo_personal'){
+    titProducto = 'equipo personal'
+  }
   return (
     <>
     <ThemeProvider theme={theme}>
@@ -25,9 +29,11 @@ export default function TituloProducto({titProducto}) {
         borderRadius:"0px 40px 0px 0px",
         width:"40%",
         mt:'.8em',
+        textTransform:'uppercase',
         paddingLeft:"24px",
         '@media (max-width: 530px)': {
-          width:"60%"
+          width:"70%",
+          fontSize:'40px'
         },
 
       }}

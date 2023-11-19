@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Grid, TextField, Button } from "@mui/material";
+import { Grid, TextField, Button,Box } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useNavigate } from "react-router-dom";
 
@@ -44,34 +44,30 @@ export default function ContAgregarPromos() {
         display: "flex",
         justifyContent: "center",
         width: "100%",
+        
       }}
     >
-      <Grid
-        item={6}
-        sx={{
-          border: "1px solid",
-          width: "14em",
-          height: "16em",
-          padding: "10px",
-          "@media (min-width:400px)": {
-            width: "25em",
-            padding: "5px",
-          },
-        }}
-      >
+      <Grid item={12}>
         <form onSubmit={agregarPromo}>
-          <TextField
-            id="outlined"
-            label="Nombre de la Promocion"
-            value={idNombrePromocion}
-            onChange={(e) => setIdNombrePromocion(e.target.value)}
-            sx={{ margin: "10px" }}
-          />
-          <div>
+          <Grid
+            sx={{
+              display: { xs: 'column', md: 'flex' },
+              alignItems: "center",
+            }}
+          >
+            <TextField
+              id="outlined"
+              label="Nombre de la Promocion"
+              value={idNombrePromocion}
+              onChange={(e) => setIdNombrePromocion(e.target.value)}
+              sx={{ margin: "1em" }}
+            />
+            <Box> 
             <Button
               component="label"
               variant="contained"
               startIcon={<CloudUploadIcon />}
+              sx={{ margin: "1em",height:'56px' }}
             >
               Subir Imagen
               <input
@@ -80,16 +76,19 @@ export default function ContAgregarPromos() {
                 style={{ display: "none" }}
               />
             </Button>
-          </div>
 
-          <Grid item={12}>
+            </Box>
+  
+          </Grid>
+
+          <Grid item={12} sx={{m:"10px"}}>
             <Button
               type="submit"
-              variant="outlined"
+              variant="contained"
               color="success"
-              sx={{ mt: 3, mb: 4 }}
+              sx={{ mt: 3, mb: 4,fontSize:'20px' }}
             >
-              Guardar
+              Agregrar Promoción
             </Button>
           </Grid>
         </form>

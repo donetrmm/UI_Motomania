@@ -10,7 +10,7 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import TablePagination from "@mui/material/TablePagination";
 import ModalDeleteProductos from "./ModalDeleteProductos";
-import { TextField } from "@mui/material";
+import { TextField,Typography } from "@mui/material";
 import EditarProductoModal from "./EditarProductoModal"; // Asegúrate de importar tu componente EditarProductoModal
 import axios from "axios";
 import styles from "./../../styles/ejemAdmin.module.css";
@@ -143,13 +143,16 @@ export default function Ptabla() {
   return (
     <>
       <div className={styles.contTable}>
+        <Typography variant="h6" sx={{textAlign:'center'}}>
+          Ingrese el codigo del producto a buscar
+        </Typography>
         <TextField
           id="outlined-basic"
           label="Codigo"
           variant="outlined"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          sx={{ margin: 1 }}
+          sx={{ margin: 1,mb:'2em' }}
         />
         <TableContainer
           component={Paper}

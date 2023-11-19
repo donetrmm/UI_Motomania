@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from '../styles/Components.module.css'
-export default function Logo({logo}) {
+export default function Logo({logo,}) {
   return (
     <>
-    <a href='/' className={styles.linkImg}>
+    <a href={logo.link} className={styles.linkImg}>
     <img
     src={logo.src}
     alt={logo.alt}
