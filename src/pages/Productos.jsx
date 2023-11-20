@@ -58,24 +58,8 @@ export default function Productos({ itemId, algo }) {
         <TituloProducto titProducto={productoRecibido} />
         <ContProductos cards={productos} />
         <PaginationCompo />
-        <h1>{itemId}</h1>
-        <p>{algo}</p>
-
-        {productos &&
-          productos.map((producto) => (
-            <div key={producto.codigo}>
-              <img
-                src={`http://localhost:8081/public/images/${producto.url_imagen}`}
-                alt="imagen de la db"
-                width="200px"
-              ></img>
-              <p>{producto.url_imagen}</p>
-            </div>
-          ))}
-
         <Footer />
       </main>
     </>
   );
 }
-
