@@ -16,7 +16,7 @@ export default function Llantas() {
               `http://localhost:8081/productos/categorias/llantas`
             );
     
-            const productos = response.data || [];
+            const productos = response.data.productos || [];
             setProductos(productos);
             console.log("productos de la db", productos);
           } catch (error) {

@@ -16,7 +16,7 @@ export default function EquipoPersonal() {
               `http://localhost:8081/productos/categorias/equipo_personal`
             );
     
-            const productos = response.data || [];
+            const productos = response.data.productos || [];
             setProductos(productos);
             console.log("productos de la db", productos);
           } catch (error) {

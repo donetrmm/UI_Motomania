@@ -17,7 +17,7 @@ export default function Accesorios() {
               `http://localhost:8081/productos/categorias/accesorios`
             );
     
-            const productos = response.data || [];
+            const productos = response.data.productos || [];
             setProductos(productos);
             console.log("productos de la db", productos);
           } catch (error) {
