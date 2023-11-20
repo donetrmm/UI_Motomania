@@ -11,22 +11,14 @@ import AgregarPromos from "./pages/admin/AgregarPromos";
 import Login from "./pages/login/Login";
 import Register from "./pages/login/Register";
 import Intento from "./pages/admin/Intento";
+import Maletas from "./pages/Maletas";
+import Accesorios from "./pages/Accesorios";
+import EquipoPersonal from "./pages/EquipoPersonal";
+import Llantas from "./pages/Llantas";
+import Cascos from "./pages/Cascos";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const cards = [
-  {
-    id: '1',
-    nombre: "Casco",
-    url: "https://cdn1.coppel.com/images/catalog/pm/5366033-1.jpg",
-    atributos: ["atributo 1", "atributo 2", "atributo 3"],
-  },
-  {
-    id: '2',
-    nombre: "Casco222",
-    url: "https://cdn1.coppel.com/images/catalog/pm/5366033-1.jpg",
-    atributos: ["atributo 11", "atributo 22", "atributo 33"],
-  },
-];
+
 
 export default function App() {
   return (
@@ -35,7 +27,12 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/prueba" element={<Home />} />
-          <Route path="/productos" element={<Productos cards={cards}/>} />
+
+          <Route path="/maletas" element={<Maletas />} />
+          <Route path="/accesorios" element={<Accesorios />} />\
+          <Route path="/equipo-personal" element={<EquipoPersonal />} />
+          <Route path="/llantas" element={<Llantas />} />
+          <Route path="/cascos" element={<Cascos />} />
           <Route path="/pro" element={<Probar />} />
           <Route path="/HomeAdmin" element={<HomeAdmin />} />
           <Route path="AgregarProductos" element={<AgregarProductos />} />

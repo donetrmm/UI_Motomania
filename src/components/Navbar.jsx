@@ -38,11 +38,11 @@ const cards = [
 ];
 
 const pages = {
-  item1: { id:"cascos",tit: "cascos", href: "/productos" },
-  item2: { id:"maletas",tit: "maletas", href: "/productos" },
-  item3: { id:"accesorios",tit: "accesorios", href: "/productos" },
-  item4: { id:"equipo_personal",tit: "equipo personal", href: "/productos" },
-  item5: { id:"llantas",tit: "llantas", href: "/productos" },
+  item1: { id:"cascos",tit: "cascos", href: "/cascos" },
+  item2: { id:"maletas",tit: "maletas", href: "/maletas" },
+  item3: { id:"accesorios",tit: "accesorios", href: "/accesorios" },
+  item4: { id:"equipo_personal",tit: "equipo personal", href: "/equipo-personal" },
+  item5: { id:"llantas",tit: "llantas", href: "/llantas" },
 };
 
 const logo = {
