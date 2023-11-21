@@ -23,7 +23,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = [
-  { icono: PersonAddIcon, link: "/IniciarSesion" },
+  { icono: PersonAddIcon, link: "/RegistrarUsuario" },
   { icono: LogoutIcon, link: "/IniciarSesion" },
 ];
 const oragn = "#FFA424";
@@ -168,16 +168,19 @@ export default function NavBarAdmin() {
                   }}
                   onClick={handleCloseUserMenu}
                 >
-                  <a href="/IniciarSesion">
+                  <a href="/RegistrarUsuario">
                     <PersonAddIcon fontSize="large" color="orange" />
                   </a>
 
                   <div>
+                    <a href="IniciarSesion">
                     <LogoutIcon
                       fontSize="large"
                       color="orange"
                       onClick={outToken}
                     />
+                    </a>
+                    
                   </div>
                 </MenuItem>
               </Menu>
