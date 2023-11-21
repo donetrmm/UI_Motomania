@@ -69,12 +69,20 @@ export default function Ptabla() {
     });
 
     socket.on("productoActualizado", async (data) => {
-      setPromociones((prevPromociones) =>
-        prevPromociones.map((producto) =>
-          producto.codigo === data.producto.codigo ? data.producto : producto
-        )
-      );
+      console.log("Producto actualizado recibido:", data);
+      
+      setPromociones((prevPromociones) => {
+        if (!prevPromociones) {
+          console.log("prevPromociones es undefined");
+          return [];
+        }
+    
+        return prevPromociones.map((product) =>
+          product.codigo === data.codigo ? { ...data.producto } : product
+        );
+      });
     });
+    
 
     socket.on("productoEliminado", async (data) => {
       setPromociones((prevPromociones) =>
