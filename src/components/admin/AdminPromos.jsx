@@ -70,6 +70,7 @@ export default function AdminPromos() {
         socket.off('promocionCreada');
         socket.off('promocionActualizada');
         socket.off('promocionEliminada');
+        
       };
     }, []);
     useEffect(() => {
