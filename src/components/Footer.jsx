@@ -9,7 +9,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 
 const contactos = [
     {icono:WhatsAppIcon, link:'https://api.whatsapp.com/send/?phone=529612006324&text&type=phone_number&app_absent=0'},
-    {icono:InstagramIcon, link:'https://www.instagram.com/Motomaníaboutique?fbclid=IwAR0bZjY3UWhZfHl2d3b2VBnEEYmxVi_uzV5DzbDcRhCz3ty3kPFQCUWwhdc'},
+    {icono:InstagramIcon, link:'https://www.instagram.com/motomaniaboutique/'},
     {icono:FacebookIcon, link:'https://www.facebook.com/profile.php?id=61550590326103'},
 ]
 const logo = {

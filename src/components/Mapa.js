@@ -1,40 +1,31 @@
-import React from 'react';
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
-
-const libraries = ['places'];
-const mapContainerStyle = {
-  width: '400px',
-  height: '300px',
-};
-const center = {
-  lat: 16.751846441169903, // default latitude
-  lng: -93.16229644731365, // default longitude
-};
+import React, { useEffect } from "react";
+import { Loader } from "@googlemaps/js-api-loader";
 
 const Mapa = () => {
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyBm4h0FC4nipfhCgBDTgh9dMTSXfPyWQHU',
-    libraries,
-  });
+  useEffect(() => {
+    const loader = new Loader({
+      apiKey: "AIzaSyBup5eD6e99mnOV1hllVtdK6_h_mIOvpgo", // Replace with your Google Maps API key
+      version: "weekly",
+    });
 
-  if (loadError) {
-    return <div>Error loading maps</div>;
-  }
+    loader.load().then((google) => {
+      const map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 16.751846441169903, lng: -93.16229644731365 },
+        zoom: 18,
+      });
 
-  if (!isLoaded) {
-    return <div>Loading maps</div>;
-  }
+      new google.maps.Marker({
+        position: { lat: 16.751846441169903, lng: -93.16229644731365 },
+        map: map,
+        title: "My Marker",
+      });
+    });
+  }, []); // Run only once when the component mounts
 
   return (
-    <div>
-      <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        zoom={18}
-        center={center}
-      >
-        <Marker position={center} />
-      </GoogleMap>
-    </div>
+    <a href="https://maps.app.goo.gl/E7bqL6JWiMco4TPM9">
+      <div id="map" style={{ height: "200px", width: "400px" }}></div>
+    </a>
   );
 };
 

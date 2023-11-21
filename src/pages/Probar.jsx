@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Mapa from "../components/Mapa";
 import NavBarAdmin from "../components/admin/NavBarAdmin";
 import Intento from './admin/Intento';
+import AcUnitIcon from '@mui/icons-material/AcUnit';
 export default function Probar() {
   const handleClick = (variable) => {
     // Almacenar la variable en localStorage
@@ -13,10 +14,8 @@ export default function Probar() {
     <>
     <div>
 
-    <button onClick={() => handleClick('Valor del Botón 1')}>
-        Enviar Variable - Botón 1
-      </button>
-
+    <Mapa />
+    <AcUnitIcon name="home" color="info" />
       
     </div>
     </>
