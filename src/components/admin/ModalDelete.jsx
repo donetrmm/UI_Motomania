@@ -60,8 +60,8 @@ export default function ModalDelete({ promo, open, onClose }) {
         <Typography variant='h4' sx={{ mt: 2, mb: 3 }}>
           {promo.id_nombre_promocion}
         </Typography>
-
-        <Button variant="outlined" color='error' sx={{ marginBottom: 2 }} onClick={deletePromo}>
+        <img src={`http://localhost:8081/public/images/${promo.url_imagen_promocion}`} alt={promo.id_nombre_promocion} width='200px'></img>
+        <Button variant="outlined" color='error' sx={{ marginBottom: 2,marginTop:2 }} onClick={deletePromo}>
           Eliminar {promo.id_nombre_promocion}
         </Button>
       </Box>

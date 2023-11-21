@@ -1,5 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { TextField, Button, InputLabel, Select, MenuItem,Dialog, DialogTitle, DialogContent, DialogActions, Typography } from "@mui/material";
+import {
+  TextField,
+  Button,
+  InputLabel,
+  Select,
+  MenuItem,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Typography,
+  Box
+} from "@mui/material";
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import axios from "axios";
 
 const EditarProductoModal = ({ product, onClose }) => {
@@ -32,10 +45,10 @@ const EditarProductoModal = ({ product, onClose }) => {
     setCompatibilidad(product.compatibilidad || "");
     setColor(product.color || "");
     setCategoria(product.categoria || "");
-    if(product.categoria === "equipo_personal"){
-        setCategoriaTitulo('equipo personal');
-    } else{
-        setCategoriaTitulo(product.categoria);
+    if (product.categoria === "equipo_personal") {
+      setCategoriaTitulo("equipo personal");
+    } else {
+      setCategoriaTitulo(product.categoria);
     }
   }, [product]);
 
@@ -80,8 +93,8 @@ const EditarProductoModal = ({ product, onClose }) => {
   const handleEditProduct = async () => {
     const formData = new FormData();
     let editarImagen = true;
-    if(!image){
-        editarImagen = false;
+    if (!image) {
+      editarImagen = false;
     }
     formData.append("codigoEditado", codigo);
     formData.append("modelo", modelo);
@@ -97,7 +110,6 @@ const EditarProductoModal = ({ product, onClose }) => {
     formData.append("color", color);
     formData.append("imagen", image);
     formData.append("editarImagen", editarImagen);
-
 
     try {
       const token = sessionStorage.getItem("token");
@@ -120,168 +132,186 @@ const EditarProductoModal = ({ product, onClose }) => {
   };
 
   return (
-    <Dialog open={true} onClose={onClose}>
-    <DialogTitle>Editar {categoriaTitulo}: {codigo}</DialogTitle>
-    <DialogContent>
-    <div>
-      <TextField
-        id="codigo"
-        label="Código"
-        variant="outlined"
-        fullWidth
-        value={codigo}
-        onChange={(e) => setCodigo(e.target.value)}
-        sx={{ margin: 2 }}
-      />
-      <TextField
-        id="modelo"
-        label="Modelo"
-        variant="outlined"
-        fullWidth
-        value={modelo}
-        onChange={(e) => setModelo(e.target.value)}
-        sx={{ margin: 2 }}
-      />
-      <TextField
-        id="marca"
-        label="Marca"
-        variant="outlined"
-        fullWidth
-        value={marca}
-        onChange={(e) => setMarca(e.target.value)}
-        sx={{ margin: 2 }}
-      />
-
-      {categoria === "cascos" && (
-        <Select
-          label="Talla"
-          value={talla}
-          onChange={(e) => handleAttributeChange("Talla", e.target.value)}
-          sx={{ margin: 2 }}
-        >
-          <MenuItem value="XS">XS</MenuItem>
-          <MenuItem value="S">S</MenuItem>
-          <MenuItem value="M">M</MenuItem>
-          <MenuItem value="L">L</MenuItem>
-          <MenuItem value="XL">XL</MenuItem>
-          <MenuItem value="XXL">XXL</MenuItem>
-        </Select>
-      )}
-
-      {categoria === "maletas" && (
-        <TextField
-          id="capacidad"
-          label="Capacidad"
-          variant="outlined"
-          fullWidth
-          value={capacidad}
-          onChange={(e) => handleAttributeChange("Capacidad", e.target.value)}
-          sx={{ margin: 2 }}
-        />
-      )}
-
-      {categoria === "llantas" && (
-        <>
+    <Dialog open={true} onClose={onClose} >
+      <DialogTitle sx={{textAlign:'center'}}>
+        Editar <span style={{fontWeight:'bold'}}>{categoriaTitulo} : {codigo}</span>
+      </DialogTitle>
+      <DialogContent sx={{}}>
+        <Box sx={{
+          display:'flex',
+          justifyContent:'center',
+          alignItems:'center',
+          flexDirection:'column',
+          width:'30em',
+          boxSizing:'border-box',
+          '@media (max-width: 700px)': {
+            width:'20em'
+          },
+        }}>
           <TextField
-            id="tipoLlanta"
-            label="Tipo"
+            id="codigo"
+            label="Código"
             variant="outlined"
             fullWidth
-            value={tipoLlanta}
-            onChange={(e) => handleAttributeChange("Tipo", e.target.value)}
-            sx={{ margin: 2 }}
+            value={codigo}
+            onChange={(e) => setCodigo(e.target.value)}
+            sx={{ margin: 2,width:'18em'}}
           />
           <TextField
-            id="rin"
-            label="Rin"
-            type="number"
+            id="modelo"
+            label="Modelo"
             variant="outlined"
             fullWidth
-            value={rin}
-            onChange={(e) => handleAttributeChange("Rin", e.target.value)}
-            sx={{ margin: 2 }}
+            value={modelo}
+            onChange={(e) => setModelo(e.target.value)}
+            sx={{ margin: 2,width:'18em' }}
           />
           <TextField
-            id="medida"
-            label="Medida"
+            id="marca"
+            label="Marca"
             variant="outlined"
             fullWidth
-            value={medida}
-            onChange={(e) => handleAttributeChange("Medida", e.target.value)}
-            sx={{ margin: 2 }}
+            value={marca}
+            onChange={(e) => setMarca(e.target.value)}
+            sx={{ margin: 2,width:'18em' }}
           />
-        </>
-      )}
 
-      {categoria === "accesorios" && (
-        <>
-          <TextField
-            id="descripcion"
-            label="Descripción"
-            variant="outlined"
-            fullWidth
-            value={descripcion}
-            onChange={(e) => handleAttributeChange("Descripcion", e.target.value)}
-            sx={{ margin: 2 }}
-          />
-          <TextField
-            id="compatibilidad"
-            label="Compatibilidad"
-            variant="outlined"
-            fullWidth
-            value={compatibilidad}
-            onChange={(e) => handleAttributeChange("Compatibilidad", e.target.value)}
-            sx={{ margin: 2 }}
-          />
-        </>
-      )}
+          {categoria === "cascos" && (
+            <Select
+              label="Talla"
+              value={talla}
+              onChange={(e) => handleAttributeChange("Talla", e.target.value)}
+              sx={{ margin: 2 }}
+            >
+              <MenuItem value="XS">XS</MenuItem>
+              <MenuItem value="S">S</MenuItem>
+              <MenuItem value="M">M</MenuItem>
+              <MenuItem value="L">L</MenuItem>
+              <MenuItem value="XL">XL</MenuItem>
+              <MenuItem value="XXL">XXL</MenuItem>
+            </Select>
+          )}
 
-      {categoria === "equipo_personal" && (
-        <>
-          <TextField
-            id="talla"
-            label="Talla"
-            variant="outlined"
-            fullWidth
-            value={talla}
-            onChange={(e) => handleAttributeChange("Talla", e.target.value)}
-            sx={{ margin: 2 }}
-          />
-          <TextField
-            id="color"
-            label="Color"
-            variant="outlined"
-            fullWidth
-            value={color}
-            onChange={(e) => handleAttributeChange("Color", e.target.value)}
-            sx={{ margin: 2 }}
-          />
-        </>
-      )}
+          {categoria === "maletas" && (
+            <TextField
+              id="capacidad"
+              label="Capacidad"
+              variant="outlined"
+              fullWidth
+              value={capacidad}
+              onChange={(e) =>
+                handleAttributeChange("Capacidad", e.target.value)
+              }
+              sx={{ margin: 2,width:'18em'}}
+            />
+          )}
 
-      <input
-        type="file"
-        onChange={handleImageChange}
-        name="imagen"
-        accept="image/*"
-        sx={{ margin: 2 }}
-      />
+          {categoria === "llantas" && (
+            <>
+              <TextField
+                id="tipoLlanta"
+                label="Tipo"
+                variant="outlined"
+                fullWidth
+                value={tipoLlanta}
+                onChange={(e) => handleAttributeChange("Tipo", e.target.value)}
+                sx={{ margin: 2,width:'18em'}}
+              />
+              <TextField
+                id="rin"
+                label="Rin"
+                type="number"
+                variant="outlined"
+                fullWidth
+                value={rin}
+                onChange={(e) => handleAttributeChange("Rin", e.target.value)}
+                sx={{ margin: 2,width:'18em'}}
+              />
+              <TextField
+                id="medida"
+                label="Medida"
+                variant="outlined"
+                fullWidth
+                value={medida}
+                onChange={(e) =>
+                  handleAttributeChange("Medida", e.target.value)
+                }
+                sx={{ margin: 2,width:'18em'}}
+              />
+            </>
+          )}
 
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={handleEditProduct}
-        sx={{ margin: 2 }}
-      >
-        Editar Producto
-      </Button>
-    </div>
-    </DialogContent>
+          {categoria === "accesorios" && (
+            <>
+              <TextField
+                id="descripcion"
+                label="Descripción"
+                variant="outlined"
+                fullWidth
+                value={descripcion}
+                onChange={(e) =>
+                  handleAttributeChange("Descripcion", e.target.value)
+                }
+                sx={{ margin: 2,width:'18em'}}
+              />
+              <TextField
+                id="compatibilidad"
+                label="Compatibilidad"
+                variant="outlined"
+                fullWidth
+                value={compatibilidad}
+                onChange={(e) =>
+                  handleAttributeChange("Compatibilidad", e.target.value)
+                }
+                sx={{ margin: 2,width:'18em'}}
+              />
+            </>
+          )}
+
+          {categoria === "equipo_personal" && (
+            <>
+              <TextField
+                id="talla"
+                label="Talla"
+                variant="outlined"
+                fullWidth
+                value={talla}
+                onChange={(e) => handleAttributeChange("Talla", e.target.value)}
+                sx={{ margin: 2,width:'18em'}}
+              />
+              <TextField
+                id="color"
+                label="Color"
+                variant="outlined"
+                fullWidth
+                value={color}
+                onChange={(e) => handleAttributeChange("Color", e.target.value)}
+                sx={{ margin: 2,width:'18em'}}
+              />
+            </>
+          )}
+
+
+             <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
+            Subir Imagen
+            <input type="file" onChange={handleImageChange} style={{ display: 'none' }} />
+          </Button>
+
+          <Button
+            variant="contained"
+            color="success"
+            onClick={handleEditProduct}
+            sx={{ margin: 2,fontSize:'18px' }}
+          >
+            Editar Producto
+          </Button>
+        </Box>
+      </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} color="primary">
+        <Button onClick={onClose} variant="outlined" color="error">
           Cancelar
         </Button>
-        <Button variant="contained" color="primary" onClick={handleEditProduct}>
+        <Button variant="outlined" color="success" onClick={handleEditProduct}>
           Editar Producto
         </Button>
       </DialogActions>
