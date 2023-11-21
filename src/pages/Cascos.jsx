@@ -7,6 +7,19 @@ import PaginationCompo from "../components/PaginationCompo";
 import ContCardSegmentado from "../components/ContCardSegmentado";
 import axios from "axios";
 import { Grid } from "@mui/material";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+const tema = createTheme({
+  palette: {
+    primary: {
+      main: "#FFA424",
+    },
+    black: {
+      main: "#070503",
+    },
+  },
+});
 const cascos = "Cascos";
 export default function Cascos() {
   const [productos, setProductos] = useState([]);
@@ -71,7 +84,16 @@ export default function Cascos() {
             ))}
           </div>
         </div>
-        <PaginationCompo />
+        <>
+          <ThemeProvider theme={tema}>
+            <Stack
+              spacing={2}
+              sx={{ display: "flex", alignItems: "center", mb: "2.2em" }}
+            >
+              <Pagination count={10} color="primary" />
+            </Stack>
+          </ThemeProvider>
+        </>
         <Footer />
       </main>
     </>
