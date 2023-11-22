@@ -152,11 +152,11 @@ export default function Ptabla() {
     <>
       <div className={styles.contTable}>
         <Typography variant="h6" sx={{textAlign:'center'}}>
-          Ingrese el codigo del producto a buscar
+          Ingrese el código del producto a buscar
         </Typography>
         <TextField
           id="outlined-basic"
-          label="Codigo"
+          label="Código"
           variant="outlined"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}

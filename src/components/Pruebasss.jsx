@@ -51,7 +51,7 @@ const products = [
     id: 4,
     name: "Accesorios",
     propiedades: [
-      { type: "", label: "Descripcion" },
+      { type: "", label: "Descripción" },
       { type: "", label: "Compatibilidad" },
     ],
   },
