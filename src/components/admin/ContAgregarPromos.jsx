@@ -61,7 +61,7 @@ export default function ContAgregarPromos() {
           >
             <TextField
               id="outlined"
-              label="Nombre de la Promocion"
+              label="Nombre de la Promoción"
               value={idNombrePromocion}
               onChange={(e) => setIdNombrePromocion(e.target.value)}
               sx={{ margin: "1em" }}

@@ -39,7 +39,7 @@ export default function TextInfProduct({
         {rin && <Typography variant="subtitle1">Rin:<span style={{fontWeight:'bold'}} >{rin}</span></Typography>}
         {medida && <Typography variant="subtitle1">Medida:<span style={{fontWeight:'bold'}} >{medida}</span></Typography>}
         {descripcion && (
-          <Typography variant="subtitle1">Descripcion:<span style={{fontWeight:'bold'}} >{descripcion}</span></Typography>
+          <Typography variant="subtitle1">Descripción:<span style={{fontWeight:'bold'}} >{descripcion}</span></Typography>
         )}
         {compatibilidad && (
           <Typography variant="subtitle1">
