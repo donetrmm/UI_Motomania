@@ -8,7 +8,10 @@ export default function Cards({card}) {
     <Card
     className={styles.Card}
     sx={{
-      transition:'1s all ease'
+      transition:'1s all ease',
+      '&:hover': {
+        boxShadow: 'rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;'
+      },
     }}
     >
         <BodyCards card={card}/>

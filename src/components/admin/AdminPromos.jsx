@@ -133,9 +133,21 @@ export default function AdminPromos() {
             component={Paper}
             sx={{
               width: "60em",
-              mb:'40px',
-              "@media (max-width: 500px)": {
+              mb: "40px",
+              "@media (max-width: 950px)": {
+                width: "50em",
+              },
+              "@media (max-width: 800px)": {
+                width: "40em",
+              },
+              "@media (max-width: 650px)": {
                 width: "30em",
+              },
+              "@media (max-width: 550px)": {
+                width: "25em",
+              },
+              "@media (max-width: 450px)": {
+                width: "20em",
               },
             }}
           >

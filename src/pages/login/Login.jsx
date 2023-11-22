@@ -46,8 +46,7 @@ export default function Login() {
             justifyContent: "center",
             alignItems: "center",
             textAlign: "center",
-            border: "1px solid",
-            marginTop: "20px",
+            marginTop: "10em",
             flexDirection: "column",
           }}
         >
@@ -78,7 +77,7 @@ export default function Login() {
             </Grid>
 
             <Grid item={12}>
-              <Button variant="outlined" type="submit" sx={{ m: "20px" }}>
+              <Button variant="outlined" type="submit" sx={{ m: "20px",fontSize:'20px'}}>
                 Iniciar Sesión
               </Button>
             </Grid>

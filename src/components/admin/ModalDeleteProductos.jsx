@@ -61,8 +61,11 @@ export default function ModalDeleteProducts({ product, open, onClose }) {
         </Typography>
         <img src={`http://localhost:8081/public/images/${product.url_imagen}`} alt={product.modelo} width='150px'></img>
 
-        <Button variant="outlined" color='error' sx={{ marginBottom: 2,marginTop:'1em' }} onClick={deleteProduct}>
-          Eliminar {product.modelo}
+        <Button variant="containded" color='error' sx={{ marginBottom: 2,marginTop:'1em' }} onClick={deleteProduct}>
+          Eliminar: <span style={{fontWeight:'bold'}}> {product.modelo}</span>
+        </Button>
+        <Button onClick={onClose} variant="outlined" color="error">
+          Cancelar
         </Button>
       </Box>
     </Modal>

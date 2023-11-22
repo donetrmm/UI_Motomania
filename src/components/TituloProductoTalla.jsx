@@ -33,7 +33,7 @@ export default function TituloProductoTalla({titProducto}) {
         paddingLeft:"24px",
         '@media (max-width: 530px)': {
           width:"60%",
-          fontSize:'30px'
+          fontSize:'25px'
         },
 
       }}

@@ -69,17 +69,20 @@ export default function ModalEditPromos({ promo, open, onClose }) {
           flexDirection: 'column',
           display: 'flex'
         }}>
-          <Typography variant='h4' sx={{ mt: 2 }}>
+          <Typography variant='h3' sx={{ mt: 3,mb:2 }}>
             {promo.id_nombre_promocion}
           </Typography>
 
-          <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
+          <Button component="label" variant="contained" startIcon={<CloudUploadIcon />} sx={{mt:2,mb:2}}>
             Subir Imagen
             <input type="file" onChange={handleFotoChange} style={{ display: 'none' }} />
           </Button>
-          <Button type="submit" variant='contained' color='success' sx={{ mt: '10px', mb: '10px' }}>
+          <Button type="submit" variant='contained' color='success' sx={{ mt: 2, mb: 2}}>
             Editar
           </Button>
+          <Button onClick={onClose} variant="outlined" color="error" sx={{mt:2,mb:2}}>
+          Cancelar
+        </Button>
         </Box>
       </form>
     </Modal>

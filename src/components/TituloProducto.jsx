@@ -31,10 +31,17 @@ export default function TituloProducto({titProducto}) {
         mt:'.8em',
         textTransform:'uppercase',
         paddingLeft:"24px",
-        '@media (max-width: 530px)': {
-          width:"70%",
+        '@media (max-width: 900px)': {
+          width:"60%",
           fontSize:'40px'
         },
+        '@media (max-width: 400px)': {
+          width:"60%",
+          fontSize:'30px'
+        },
+
+
+
 
       }}
       >

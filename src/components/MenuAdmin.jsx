@@ -1,8 +1,8 @@
 import React from "react";
-import { Grid, Typography} from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import ContAdminCard from "./ContAdminCard";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import EncabezadoLeft from './../components/admin/EncabezadoLeft'
+import EncabezadoLeft from "./../components/admin/EncabezadoLeft";
 
 const tema = createTheme({
   typography: {
@@ -17,12 +17,12 @@ const tema = createTheme({
     },
   },
 });
-export default function MenuAdmin({ cards,encabezado }) {
+export default function MenuAdmin({ cards, encabezado }) {
   return (
     <>
-    <ThemeProvider theme={tema}>
-    <EncabezadoLeft encabezado={encabezado} />
-    </ThemeProvider>
+      <ThemeProvider theme={tema}>
+        <EncabezadoLeft encabezado={encabezado} />
+      </ThemeProvider>
 
       <Grid
         container
@@ -32,14 +32,12 @@ export default function MenuAdmin({ cards,encabezado }) {
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
-          paddingTop:'-30px',
-          paddingBottom:"20px",
+          paddingTop: "-30px",
+          paddingBottom: "20px",
           marginTop: "10px",
           marginBottom: "20px",
-
         }}
       >
-        
         <>
           {cards.map((card) => (
             <ContAdminCard card={card} />

@@ -246,22 +246,30 @@ export default function Pruebasss() {
       {selectedProduct && (
         <>
           <Grid item={12} sx={{
-            width:'100%',
-            mb:'2em'
+            display:'flex',
+            justifyContent:'center',
+            flexDirection:'column',
+            width:'80%',
+            boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+            marginTop:'1em',
+            marginBottom:'1em',
+            marginLeft:'1em',
+            borderRadius:'15px'
           }}>
           <EncabezadoLeft encabezado={selectedProduct.name} />
             {selectedProduct.propiedades.map((propiedades) => (
               <div key={propiedades.label}>
                 {propiedades.label === "Talla" && (
-                  <FormControl sx={{ margin: "10px" }}>
-                    <InputLabel>{propiedades.label}</InputLabel>
+                  <FormControl sx={{ margin: "10px",width:'14em' }}>
+                    <InputLabel sx={{textAlign:'center'}}>{propiedades.label}</InputLabel>
                     <Select
                       label={propiedades.label}
-                      sx={{ margin: "10px" }}
+                   
                       value={talla}
                       onChange={(e) =>
                         handleAttributeChange(propiedades.label, e.target.value)
                       }
+                      
                     >
                       <MenuItem value="XS">XS</MenuItem>
                       <MenuItem value="S">S</MenuItem>
@@ -285,6 +293,7 @@ export default function Pruebasss() {
                 )}
               </div>
             ))}
+            <Box>
             <TextField
               id="codigo"
               label="Código"
@@ -309,6 +318,9 @@ export default function Pruebasss() {
               value={marca}
               onChange={(e) => handleAttributeChange("Marca", e.target.value)}
             />
+
+            </Box>
+     
             <Box sx={{
               m:'15px'
             }}>
@@ -325,14 +337,17 @@ export default function Pruebasss() {
                 />
               </Button>
             </Box>
+            <Box>
             <Button
               variant="contained"
               color="success"
-              sx={{m:'10px',fontSize:'20px'}}
+              sx={{m:'10px',fontSize:'20px',mb:'2em'}}
               onClick={handleAddProduct}
             >
               Agregar Producto
             </Button>
+            </Box>
+
           </Grid>
         </>
       )}
