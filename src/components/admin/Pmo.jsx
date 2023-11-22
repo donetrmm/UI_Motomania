@@ -64,7 +64,7 @@ export default function Pmo({ product, open, onClose }) {
             />
                 <TextField
               id="outlined"
-              label='descripcion'
+              label='descripción'
               sx={{margin:'10px'}}
             />
             <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>

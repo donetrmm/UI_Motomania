@@ -17,7 +17,7 @@ export default function ModalAdmin({ open, handleClose, handleOpen }) {
       >
         <ConteModal />
       </Modal>
-      <Button onClick={handleOpen}>Open modalaa</Button>
+      <Button onClick={handleOpen}>Open modal</Button>
     </div>
 
     </>

@@ -7,7 +7,6 @@ export default function TextoEncabezado3({ encabezado }) {
       <Typography
         variant="h3"
         sx={{
-            // Estilos por defecto aquí
             backgroundColor:"orange",
             borderRadius: "0px 30px 0px 0px",
             fontSize:'50px',

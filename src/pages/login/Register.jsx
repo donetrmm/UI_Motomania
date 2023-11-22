@@ -51,7 +51,6 @@ export default function Register() {
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://localhost:8081/usuarios');
-                // No estás utilizando la respuesta, considera si realmente necesitas setUsuarios
             } catch (error) {
                 console.error('Error al obtener los elementos', error);
             }
