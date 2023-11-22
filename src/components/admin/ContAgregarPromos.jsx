@@ -92,7 +92,7 @@ export default function ContAgregarPromos() {
               color="success"
               sx={{ mt: 3, mb: 4,fontSize:'20px' }}
             >
-              Agregrar Promoción
+              Agregar Promoción
             </Button>
           </Grid>
         </form>

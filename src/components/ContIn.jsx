@@ -20,7 +20,7 @@ export default function ContIn() {
       flexDirection:'column'
     }}>
       <Box>
-      <TextField id="outlined" label="Codigo" sx={{ margin: "10px" }} />
+      <TextField id="outlined" label="Código" sx={{ margin: "10px" }} />
       <TextField
         id="outlined"
         label="Modelo"

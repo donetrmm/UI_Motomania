@@ -5,9 +5,9 @@ import NavBarAdmin from './../../components/admin/NavBarAdmin'
 import TituloAdmin from "../../components/TituloAdmin";
 import MenuAdmin from "../../components/MenuAdmin";
 
-const tit1 = "Administrar Motomania";
-const productos = "Productos Motomania";
-const promos = "Promociones Motomania";
+const tit1 = "Administrar Motomanía";
+const productos = "Productos Motomanía";
+const promos = "Promociones Motomanía";
 
 const cards = [
   {
@@ -22,7 +22,7 @@ const cards = [
   },
 ];
 
-const producTit = "Productos Motomania";
+const producTit = "Productos Motomanía";
 
 const cardsPromo = [
   {
@@ -37,7 +37,7 @@ const cardsPromo = [
   },
 ];
 
-const producPromo = "Promociones Motomania";
+const producPromo = "Promociones Motomanía";
 
 const HomeAdmin = () => {
   const navigate = useNavigate();

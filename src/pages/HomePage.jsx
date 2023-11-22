@@ -25,7 +25,7 @@ const imgMain = {
 };
 const titulo = "“viajar en moto significa vivir con pasión”";
 const subtitulo =
-  "Por eso en motomania nos preocupamos por brindarte los mejores accesorios, a precios accesibles, para que complementes tu estilo y al mismo tiempo vayas seguro a todas partes.";
+  "Por eso en Motomanía nos preocupamos por brindarte los mejores accesorios, a precios accesibles, para que complementes tu estilo y al mismo tiempo vayas seguro a todas partes.";
 const titulohash = "#somoscomplicesdeturodada";
 const imgPromo1 = {
   src: "/imgPagePromo.png",
