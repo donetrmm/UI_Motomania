@@ -14,7 +14,6 @@ export default function ContProductos({cards}) {
            alignItems: "center",
            textAlign: "center",
            paddingBottom:'2em',
-           border:'1px solid',
            mt:'3em',
            mb:'3em'   
  

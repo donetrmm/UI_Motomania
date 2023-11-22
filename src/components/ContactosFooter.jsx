@@ -4,7 +4,7 @@ import LinksFooter from './LinksFooter';
 export default function ContactosFooter({contactos}) {
   return (
     <Box>
-        <Typography variant='h4' sx={{color:'azure'}}>
+        <Typography variant='h4' sx={{color:'azure',textTransform:'uppercase',letterSpacing:'2px'}}>
             Contactanos
         </Typography>
           <Box sx={{
