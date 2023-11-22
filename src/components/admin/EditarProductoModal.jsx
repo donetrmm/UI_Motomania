@@ -10,10 +10,12 @@ import {
   DialogContent,
   DialogActions,
   Typography,
-  Box
+  Box,
 } from "@mui/material";
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 const EditarProductoModal = ({ product, onClose }) => {
   const [codigo, setCodigo] = useState("");
@@ -123,31 +125,47 @@ const EditarProductoModal = ({ product, onClose }) => {
         formData,
         { headers }
       );
-
-      console.log("Producto editado:", response.data);
       onClose();
+      toast.success('Producto editado.')
     } catch (error) {
+      toast.error('Error al editar producto.')
       console.error("Error al editar el producto:", error);
     }
   };
 
   return (
-    <Dialog open={true} onClose={onClose} >
-      <DialogTitle sx={{textAlign:'center'}}>
-        Editar <span style={{fontWeight:'bold'}}>{categoriaTitulo} : {codigo}</span>
+    <Dialog open={true} onClose={onClose}>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="dark"
+      />
+      <DialogTitle sx={{ textAlign: "center" }}>
+        Editar{" "}
+        <span style={{ fontWeight: "bold" }}>
+          {categoriaTitulo} : {codigo}
+        </span>
       </DialogTitle>
       <DialogContent sx={{}}>
-        <Box sx={{
-          display:'flex',
-          justifyContent:'center',
-          alignItems:'center',
-          flexDirection:'column',
-          width:'30em',
-          boxSizing:'border-box',
-          '@media (max-width: 700px)': {
-            width:'20em'
-          },
-        }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "30em",
+            boxSizing: "border-box",
+            "@media (max-width: 700px)": {
+              width: "20em",
+            },
+          }}
+        >
           <TextField
             id="codigo"
             label="Código"
@@ -155,7 +173,7 @@ const EditarProductoModal = ({ product, onClose }) => {
             fullWidth
             value={codigo}
             onChange={(e) => setCodigo(e.target.value)}
-            sx={{ margin: 2,width:'18em'}}
+            sx={{ margin: 2, width: "18em" }}
           />
           <TextField
             id="modelo"
@@ -164,7 +182,7 @@ const EditarProductoModal = ({ product, onClose }) => {
             fullWidth
             value={modelo}
             onChange={(e) => setModelo(e.target.value)}
-            sx={{ margin: 2,width:'18em' }}
+            sx={{ margin: 2, width: "18em" }}
           />
           <TextField
             id="marca"
@@ -173,7 +191,7 @@ const EditarProductoModal = ({ product, onClose }) => {
             fullWidth
             value={marca}
             onChange={(e) => setMarca(e.target.value)}
-            sx={{ margin: 2,width:'18em' }}
+            sx={{ margin: 2, width: "18em" }}
           />
 
           {categoria === "cascos" && (
@@ -202,7 +220,7 @@ const EditarProductoModal = ({ product, onClose }) => {
               onChange={(e) =>
                 handleAttributeChange("Capacidad", e.target.value)
               }
-              sx={{ margin: 2,width:'18em'}}
+              sx={{ margin: 2, width: "18em" }}
             />
           )}
 
@@ -215,7 +233,7 @@ const EditarProductoModal = ({ product, onClose }) => {
                 fullWidth
                 value={tipoLlanta}
                 onChange={(e) => handleAttributeChange("Tipo", e.target.value)}
-                sx={{ margin: 2,width:'18em'}}
+                sx={{ margin: 2, width: "18em" }}
               />
               <TextField
                 id="rin"
@@ -225,7 +243,7 @@ const EditarProductoModal = ({ product, onClose }) => {
                 fullWidth
                 value={rin}
                 onChange={(e) => handleAttributeChange("Rin", e.target.value)}
-                sx={{ margin: 2,width:'18em'}}
+                sx={{ margin: 2, width: "18em" }}
               />
               <TextField
                 id="medida"
@@ -236,7 +254,7 @@ const EditarProductoModal = ({ product, onClose }) => {
                 onChange={(e) =>
                   handleAttributeChange("Medida", e.target.value)
                 }
-                sx={{ margin: 2,width:'18em'}}
+                sx={{ margin: 2, width: "18em" }}
               />
             </>
           )}
@@ -252,7 +270,7 @@ const EditarProductoModal = ({ product, onClose }) => {
                 onChange={(e) =>
                   handleAttributeChange("Descripcion", e.target.value)
                 }
-                sx={{ margin: 2,width:'18em'}}
+                sx={{ margin: 2, width: "18em" }}
               />
               <TextField
                 id="compatibilidad"
@@ -263,7 +281,7 @@ const EditarProductoModal = ({ product, onClose }) => {
                 onChange={(e) =>
                   handleAttributeChange("Compatibilidad", e.target.value)
                 }
-                sx={{ margin: 2,width:'18em'}}
+                sx={{ margin: 2, width: "18em" }}
               />
             </>
           )}
@@ -277,7 +295,7 @@ const EditarProductoModal = ({ product, onClose }) => {
                 fullWidth
                 value={talla}
                 onChange={(e) => handleAttributeChange("Talla", e.target.value)}
-                sx={{ margin: 2,width:'18em'}}
+                sx={{ margin: 2, width: "18em" }}
               />
               <TextField
                 id="color"
@@ -286,22 +304,29 @@ const EditarProductoModal = ({ product, onClose }) => {
                 fullWidth
                 value={color}
                 onChange={(e) => handleAttributeChange("Color", e.target.value)}
-                sx={{ margin: 2,width:'18em'}}
+                sx={{ margin: 2, width: "18em" }}
               />
             </>
           )}
 
-
-             <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
+          <Button
+            component="label"
+            variant="contained"
+            startIcon={<CloudUploadIcon />}
+          >
             Subir Imagen
-            <input type="file" onChange={handleImageChange} style={{ display: 'none' }} />
+            <input
+              type="file"
+              onChange={handleImageChange}
+              style={{ display: "none" }}
+            />
           </Button>
 
           <Button
             variant="contained"
             color="success"
             onClick={handleEditProduct}
-            sx={{ margin: 2,fontSize:'18px' }}
+            sx={{ margin: 2, fontSize: "18px" }}
           >
             Editar Producto
           </Button>
