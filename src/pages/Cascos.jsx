@@ -3,13 +3,12 @@ import Navbar from "../components/Navbar";
 import TituloProducto from "../components/TituloProducto";
 import TituloProductoTalla from "../components/TituloProductoTalla";
 import Footer from "../components/Footer";
-import PaginationCompo from "../components/PaginationCompo";
 import ContCardSegmentado from "../components/ContCardSegmentado";
 import axios from "axios";
-import { Grid } from "@mui/material";
-import Pagination from "@mui/material/Pagination";
+import { Grid, Pagination } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+
 const tema = createTheme({
   palette: {
     primary: {
@@ -20,82 +19,82 @@ const tema = createTheme({
     },
   },
 });
-const cascos = "Cascos";
-export default function Cascos() {
-  const [productos, setProductos] = useState([]);
+
+const Cascos = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalProducts, setTotalProducts] = useState(0);
+  const [tallasProductos, setTallasProductos] = useState({});
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:8081/productos/categorias/cascos`
-        );
-        console.log("segun productos", response.data.productos);
+    fetchData(currentPage);
+  }, [currentPage]);
 
-        const productos = response.data.productos || [];
-        setProductos(productos);
-        console.log("productos de la db", productos);
-      } catch (error) {
-        console.error("Error al obtener los elementos", error);
-      }
-    };
+  const fetchData = async (page) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8081/productos/search/cascos?page=${page}`
+      );
+      const { totalPages, totalProductos, resultadosPorTalla } = response.data;
+      setCurrentPage(currentPage);
+      setTotalPages(totalPages);
+      setTotalProducts(totalProductos);
+      setTallasProductos(resultadosPorTalla);
+    } catch (error) {
+      console.error("Error al obtener los elementos", error);
+    }
+  };
 
-    fetchData();
-  }, []);
-  const cascosOrdenadosPorTalla = productos.sort((a, b) =>
-    a.talla.localeCompare(b.talla)
-  );
-  const cascosPorTalla = cascosOrdenadosPorTalla.reduce((acc, casco) => {
-    acc[casco.talla] = acc[casco.talla] || [];
-    acc[casco.talla].push(casco);
-    return acc;
-  }, {});
+  const handleChangePage = (event, newPage) => {
+    setCurrentPage(newPage);
+  };
+
   return (
     <>
       <Navbar />
       <main>
-        <TituloProducto titProducto={cascos} />
+        <TituloProducto titProducto="Cascos" />
         <div>
-          <div>
-            {Object.keys(cascosPorTalla).map((talla) => (
-              <>
-                <div>
-                  <TituloProductoTalla titProducto={talla} />
-                  <Grid
-                    container
-                    spacing={3}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      textAlign: "center",
-                      paddingBottom: "2em",
-                      mt: "3em",
-                      mb: "3em",
-                    }}
-                  >
-                    <>
-                      {cascosPorTalla[talla].map((casco) => (
-                        <ContCardSegmentado casco={casco} />
-                      ))}
-                    </>
-                  </Grid>
-                </div>
-              </>
-            ))}
-          </div>
+          {Object.keys(tallasProductos).map((talla) => (
+            <div key={talla}>
+              <TituloProductoTalla titProducto={talla} />
+              <Grid
+                container
+                spacing={3}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  textAlign: "center",
+                  paddingBottom: "2em",
+                  mt: "3em",
+                  mb: "3em",
+                }}
+              >
+                {tallasProductos[talla].productos.map((casco) => (
+                  <ContCardSegmentado key={casco._id} casco={casco} />
+                ))}
+              </Grid>
+            </div>
+          ))}
         </div>
-        <>
-          <ThemeProvider theme={tema}>
-            <Stack
-              spacing={2}
-              sx={{ display: "flex", alignItems: "center", mb: "2.2em" }}
-            >
-              <Pagination count={10} color="primary" />
-            </Stack>
-          </ThemeProvider>
-        </>
+        <ThemeProvider theme={tema}>
+          <Stack
+            spacing={2}
+            sx={{ display: "flex", alignItems: "center", mb: "2.2em" }}
+          >
+            <Pagination
+              count={totalPages}
+              color="primary"
+              page={currentPage}
+              onChange={handleChangePage}
+            />
+          </Stack>
+        </ThemeProvider>
         <Footer />
       </main>
     </>
   );
-}
+};
+
+export default Cascos;
