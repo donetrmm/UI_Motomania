@@ -191,7 +191,7 @@ export default function Pruebasss() {
 
       toast.success(response.data.message);
     } catch (error) {
-      toast.error("Error al crear producto.");
+      toast.error("Código no disponible.");
     }
   };
 
