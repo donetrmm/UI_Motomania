@@ -20,10 +20,17 @@ export default function TituloAdmin({titulo}) {
       wordWrap:'break-word',
       textTransform:'uppercase',
       mt:'.5em',
-      fontSize:'50px',
+      '@media screen and (min-width: 200px)': {
+        fontSize:'20px'
+      },
       '@media screen and (min-width: 400px)': {
+        fontSize:'30px'
+      },
+      '@media screen and (min-width: 500px)': {
         fontSize:'60px'
       },
+
+
       }}>
         {titulo}
     </Typography>

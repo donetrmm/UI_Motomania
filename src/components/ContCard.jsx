@@ -11,6 +11,7 @@ export default function ContCard({card}) {
       justifyContent: "center",
       alignItems: "center",
       textAlign: "center",
+      
     }}
     >
         <Cards 

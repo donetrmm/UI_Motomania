@@ -311,9 +311,6 @@ const EditarProductoModal = ({ product, onClose }) => {
         <Button onClick={onClose} variant="outlined" color="error">
           Cancelar
         </Button>
-        <Button variant="outlined" color="success" onClick={handleEditProduct}>
-          Editar Producto
-        </Button>
       </DialogActions>
     </Dialog>
   );

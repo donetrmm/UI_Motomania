@@ -43,16 +43,20 @@ export default function ContAgregarPromos() {
       sx={{
         display: "flex",
         justifyContent: "center",
-        width: "100%",
-        
+        width: "80%",
+        paddingRight:'2em',
+        marginLeft:'2em',
+        boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+        borderRadius:'15px'
       }}
     >
-      <Grid item={12}>
+      <Grid item={12} >
         <form onSubmit={agregarPromo}>
           <Grid
             sx={{
               display: { xs: 'column', md: 'flex' },
               alignItems: "center",
+              justifyContent:'center'
             }}
           >
             <TextField

@@ -66,7 +66,7 @@ export default function Navbar() {
   return (
     <ThemeProvider theme={theme}>
     <div>
-    <AppBar position="static">
+    <AppBar position="fixed" sx={{boxShadow:' 0px 4px 12px 7px rgba(0,0,0,0.47)'}}>
     <Container maxWidth="xl">
       <Toolbar disableGutters>
         <Logo logo={logo} />

@@ -17,6 +17,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LogoutIcon from "@mui/icons-material/Logout";
 import axios from "axios";
+import styles from './../../styles/ejemAdmin.module.css'
 
 import { Grid } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -71,7 +72,7 @@ export default function NavBarAdmin() {
 
   return (
     <ThemeProvider theme={theme}>
-      <AppBar position="static" sx={{ boxSizing: "border-box" }}>
+      <AppBar position="static" sx={{ boxSizing: "border-box",boxShadow:' 0px 4px 12px 7px rgba(0,0,0,0.47)' }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Grid
@@ -109,9 +110,13 @@ export default function NavBarAdmin() {
                   },
                 }}
               >
+                <a href="/" className={styles.linkCat}>
                 <Typography
                   variant="h6"
                   sx={{
+                    display:{
+                      xs:'flex'
+                    },
                     mr: "30px",
                     fontSize: "50px",
                     color: "#FFA424",
@@ -119,15 +124,19 @@ export default function NavBarAdmin() {
                     "@media (min-width:150px)": {
                       fontSize: "10px",
                       mr: "5px",
+                     
                     },
-                    "@media (min-width:370px)": {
+                    "@media (min-width:390px)": {
                       fontSize: "30px",
                       mr: "30px",
+               
                     },
                   }}
                 >
                   Catalogo
                 </Typography>
+                </a>
+      
                 <Tooltip title="Mas Opciones">
                   <IconButton onClick={handleOpenUserMenu}>
                     <Avatar
