@@ -3,32 +3,49 @@ import Navbar from "../components/Navbar";
 import TituloProducto from "../components/TituloProducto";
 import ContProductos from "../components/ContProductos";
 import Footer from "../components/Footer";
-import PaginationCompo from "../components/PaginationCompo";
 import axios from "axios";
 
-const titProducto = "Cascos";
-export default function Productos({ itemId, algo }) {
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-  const [totalPages, setTotalPages] = useState(1);
-  const [totalElements, setTotalElements] = useState(0);
+const tema = createTheme({
+  palette: {
+    primary: {
+      main: "#FFA424",
+    },
+    black: {
+      main: "#070503",
+    },
+  },
+});
+
+const maletas = "Maletas";
+
+
+export default function Productos() {
   const [productos, setProductos] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
 
-  const [cont, setCont] = useState([]);
-  const productoRecibido = localStorage.getItem("produc");
+  const [tituloProduc, setTituloProduc] = useState('');
 
   useEffect(() => {
-    console.log("id mandado", algo);
-    console.log("id SEGUN NUEVO", algo);
+    const produc = localStorage.getItem('produc');
+    if(produc){
+      setTituloProduc(produc)
+    }
     const fetchData = async () => {
       try {
+        const categoria = localStorage.getItem('produc');
         const response = await axios.get(
-          `http://localhost:8081/productos/categorias/${productoRecibido}`
+          `http://localhost:8081/productos/categorias/${categoria}?page=${currentPage}&limit=6`
         );
 
-        const productos = response.data || [];
+        const data = response.data;
+        const productos = data.productos || [];
         setProductos(productos);
+        setTotalPages(data.totalPages || 0);
         console.log("productos de la db", productos);
       } catch (error) {
         console.error("Error al obtener los elementos", error);
@@ -36,28 +53,34 @@ export default function Productos({ itemId, algo }) {
     };
 
     fetchData();
-  }, []);
-  const cards = [
-    {
-      id: "1",
-      nombre: "Casco",
-      url: "https://cdn1.coppel.com/images/catalog/pm/5366033-1.jpg",
-      atributos: ["atributo 1", "atributo 2", "atributo 3"],
-    },
-    {
-      id: "2",
-      nombre: "Casco222",
-      url: "https://cdn1.coppel.com/images/catalog/pm/5366033-1.jpg",
-      atributos: ["atributo 11", "atributo 22", "atributo 33"],
-    },
-  ];
+  }, [currentPage]);
+
+  const handlePageChange = (event, page) => {
+    setCurrentPage(page);
+  };
+
+
   return (
     <>
       <Navbar />
       <main>
-        <TituloProducto titProducto={productoRecibido} />
+        <TituloProducto titProducto={tituloProduc} />
         <ContProductos cards={productos} />
-        <PaginationCompo />
+        <>
+          <ThemeProvider theme={tema}>
+            <Stack
+              spacing={2}
+              sx={{ display: "flex", alignItems: "center", mb: "2.2em" }}
+            >
+              <Pagination
+                count={totalPages}
+                page={currentPage}
+                onChange={handlePageChange}
+                color="primary"
+              />
+            </Stack>
+          </ThemeProvider>
+        </>
         <Footer />
       </main>
     </>

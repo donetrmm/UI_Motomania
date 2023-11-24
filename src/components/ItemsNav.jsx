@@ -31,15 +31,21 @@ export default function ItemsNav({ pages }) {
     setAnchorElNav(null);
   };
   const handleClick = (produc) => {
-    localStorage.setItem('produc', produc);
-    window.location = '/Productos';
+    if(produc === 'cascos'){
+      window.location.assign('/cascos')
+    } else{
+      localStorage.setItem('produc', produc);
+      console.log('local item',produc)
+      window.location.assign('/productos')
+    }
+   
+    
   };
   return (
     <>
     <ThemeProvider theme={theme}>
     {Object.values(pages).map((item, index) => (
         <Button
-          href={item.href}
           color="primary"
           sx={{ my: 2, display: "flex", color: primary,letterSpacing:'2px',fontSize:'14px',textAlign:'center',transition:'.5s all ease',
           opacity: hoveredTitle === 'Inicio' ? .5 : .5,
