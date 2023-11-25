@@ -3,6 +3,8 @@ import axios from "axios";
 import { Grid, TextField, Button,Box } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 export default function ContAgregarPromos() {
   const navigate = useNavigate();
@@ -30,8 +32,8 @@ export default function ContAgregarPromos() {
       await axios.post("http://localhost:8081/promociones", formData, {
         headers,
       });
-      alert("Agregado correctamente");
-      navigate("/AdministrarPromos"); // Redirige a la página de administración de promociones
+      toast.success('Promoción agregada')
+      // Redirige a la página de administración de promociones
     } catch (error) {
       console.error("Error al agregar la promoción:", error);
     }
@@ -50,6 +52,17 @@ export default function ContAgregarPromos() {
         borderRadius:'15px'
       }}
     >
+            <ToastContainer
+        position="bottom-center"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="dark"
+      />
       <Grid item={12} >
         <form onSubmit={agregarPromo}>
           <Grid

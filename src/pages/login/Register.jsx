@@ -11,6 +11,8 @@ import InputNombre from '../../components/admin/InputNombre';
 import InputApellido from '../../components/admin/InputApellido';
 import InputUsuario from '../../components/admin/InputUsuario';
 import InputPasswd from '../../components/admin/InputPasswd';
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 const encabezado = "Registrarse";
 
@@ -41,9 +43,12 @@ export default function Register() {
             const response = await axios.post('http://localhost:8081/usuarios', userData, { headers });
             console.log(response.data.message);
             console.log('Todo bien');
+            toast.success('Usuario Agregado')
+            window.location.assign('/IniciarSesion')
         } catch (error) {
             console.error(error);
             console.log('No jala');
+            toast.error('Error al registrar usuario.')
         }
     }
 
@@ -77,11 +82,21 @@ export default function Register() {
                         justifyContent: "center",
                         alignItems: "center",
                         textAlign: "center",
-                        border: "1px solid",
-                        marginTop: "20px",
+                        marginTop: "9em",
                         flexDirection: "column",
                     }}
                 >
+                          <ToastContainer
+        position="bottom-center"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="dark"
+      />
                     <EncabezadoLeft encabezado={encabezado} />
                     <form onSubmit={handleSubmit}>
                         <Grid item={12}>
