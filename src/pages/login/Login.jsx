@@ -48,6 +48,7 @@ export default function Login() {
             textAlign: "center",
             marginTop: "10em",
             flexDirection: "column",
+
           }}
         >
           <ToastContainer

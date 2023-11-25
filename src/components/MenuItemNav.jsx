@@ -9,8 +9,15 @@ export default function MenuItemNav({ pages }) {
     setAnchorElNav(null);
   };
   const handleClick = (produc) => {
-    localStorage.setItem('produc', produc);
-    window.location = '/Productos';
+    if(produc === 'cascos'){
+      window.location.assign('/cascos')
+    } else{
+      localStorage.setItem('produc', produc);
+      console.log('local item',produc)
+      window.location.assign('/productos')
+    }
+   
+    
   };
   return (
     <>

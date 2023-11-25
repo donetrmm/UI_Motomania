@@ -33,11 +33,13 @@ export default function TituloProducto({titProducto}) {
         paddingLeft:"24px",
         '@media (max-width: 900px)': {
           width:"60%",
-          fontSize:'40px'
+          fontSize:'40px',
+          mt:'5em'
         },
         '@media (max-width: 400px)': {
           width:"60%",
-          fontSize:'30px'
+          fontSize:'30px',
+        
         },
 
 
