@@ -28,7 +28,7 @@ export default function TituloProducto({titProducto}) {
         border:"1px primary.main",
         borderRadius:"0px 40px 0px 0px",
         width:"40%",
-        mt:'.8em',
+        mt:'3em',
         textTransform:'uppercase',
         paddingLeft:"24px",
         '@media (max-width: 900px)': {
