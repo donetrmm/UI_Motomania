@@ -34,7 +34,7 @@ Para ejecutar un proyecto de Next.js, siga los siguientes pasos:
 3. Inicie el servidor de desarrollo ejecutando el siguiente comando:
 
     ```
-    npm run start
+    npm start
     ```
 
 El servidor de desarrollo se iniciará en la dirección http://localhost:3000 (puede ser diferente en caso que
