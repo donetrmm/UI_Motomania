@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+**README.md**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Motomania
 
-## Available Scripts
+¡Bienvenido a Motomania, tu destino definitivo para accesorios de alta calidad diseñados especialmente para los amantes de las motocicletas! Este proyecto multidisciplinario ha sido concebido con pasión y dedicación para ofrecer a los motociclistas una experiencia única al explorar y adquirir productos que realzan tanto el estilo como la funcionalidad de sus máquinas de dos ruedas.
 
-In the project directory, you can run:
+Este proyecto fue creado por Iskander Ramos, Eugenio Gordillo y Marco Arellanes.
 
-### `npm start`
+## Descripción del Proyecto
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Motomania no es solo un catálogo, es una experiencia completa para los entusiastas de las motocicletas. Este proyecto multidisciplinario combina elementos de diseño, ingeniería y comercio electrónico para proporcionar una plataforma única que satisface las necesidades de los motociclistas modernos. Desde piezas de alto rendimiento hasta accesorios estilizados, Motomania ofrece una selección cuidadosamente curada para complementar cualquier estilo de conducción.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Clonar el repositorio GitHub
 
-### `npm test`
+Para clonar un proyecto de GitHub, siga los siguientes pasos:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Abra una terminal.
+2. Navegue hasta la carpeta donde desea clonar el proyecto.
+3. Ejecute el siguiente comando:
 
-### `npm run build`
+    ```
+    git clone https://github.com/donetrmm/UI_Motomania.git
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Este comando creará una nueva carpeta llamada `UI_Motomania` en la carpeta actual.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Ejecutar un proyecto de ReactJs
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Para ejecutar un proyecto de Next.js, siga los siguientes pasos:
 
-### `npm run eject`
+1. Abra una terminal.
+2. Navegue hasta la carpeta del proyecto.
+3. Instale las dependencias del proyecto ejecutando el siguiente comando:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ```
+    npm install
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Inicie el servidor de desarrollo ejecutando el siguiente comando:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    ```
+    npm start
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+El servidor de desarrollo se iniciará en la dirección http://localhost:3000 (puede ser diferente en caso que
+el puerto 3000 se encuentre ocupado).
